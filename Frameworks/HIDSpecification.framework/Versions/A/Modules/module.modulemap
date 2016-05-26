@@ -1,0 +1,3 @@
+framework module HIDSpecification {
+    header "HIDSpecification-Swift.h"
+}

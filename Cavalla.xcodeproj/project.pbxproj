@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE0D503415D5AB6A006C7F16 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0D503315D5AB6A006C7F16 /* IOKit.framework */; };
+		BE62963F15D5824000E38649 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE62963E15D5824000E38649 /* Cocoa.framework */; };
+		BE63AC801CF681DA00C3DD49 /* HIDSpecification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE63AC7F1CF681DA00C3DD49 /* HIDSpecification.framework */; };
+		BE63AC811CF6820300C3DD49 /* HIDSpecification.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE63AC7F1CF681DA00C3DD49 /* HIDSpecification.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BE63AC861CF6AAD000C3DD49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63AC821CF6AAD000C3DD49 /* AppDelegate.swift */; };
+		BE63AC871CF6AAD000C3DD49 /* CAVHIDDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63AC831CF6AAD000C3DD49 /* CAVHIDDevice.swift */; };
+		BE63AC881CF6AAD000C3DD49 /* CAVHIDElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63AC841CF6AAD000C3DD49 /* CAVHIDElement.swift */; };
+		BE63AC891CF6AAD000C3DD49 /* CAVHIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63AC851CF6AAD000C3DD49 /* CAVHIDManager.swift */; };
+		BE63AC931CF6AB2C00C3DD49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE63AC8E1CF6AB2C00C3DD49 /* InfoPlist.strings */; };
+		BE63AC941CF6AB2C00C3DD49 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE0D504C15D65441006C7F16 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Frameworks;
+			dstSubfolderSpec = 1;
+			files = (
+				BE63AC811CF6820300C3DD49 /* HIDSpecification.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BE0D503315D5AB6A006C7F16 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		BE62963A15D5824000E38649 /* Cavalla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cavalla.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE62963E15D5824000E38649 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		BE62964115D5824000E38649 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BE62964315D5824000E38649 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BE63AC7F1CF681DA00C3DD49 /* HIDSpecification.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HIDSpecification.framework; path = Frameworks/HIDSpecification.framework; sourceTree = "<group>"; };
+		BE63AC821CF6AAD000C3DD49 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Cavalla/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		BE63AC831CF6AAD000C3DD49 /* CAVHIDDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAVHIDDevice.swift; path = Cavalla/CAVHIDDevice.swift; sourceTree = SOURCE_ROOT; };
+		BE63AC841CF6AAD000C3DD49 /* CAVHIDElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAVHIDElement.swift; path = Cavalla/CAVHIDElement.swift; sourceTree = SOURCE_ROOT; };
+		BE63AC851CF6AAD000C3DD49 /* CAVHIDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAVHIDManager.swift; path = Cavalla/CAVHIDManager.swift; sourceTree = SOURCE_ROOT; };
+		BE63AC8A1CF6AB2300C3DD49 /* Cavalla-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Cavalla-Info.plist"; path = "Cavalla/Cavalla-Info.plist"; sourceTree = SOURCE_ROOT; };
+		BE63AC8F1CF6AB2C00C3DD49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Cavalla/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		BE63AC911CF6AB2C00C3DD49 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Cavalla/en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
+		BE63AC961CF6B85C00C3DD49 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BE63AC971CF6C51D00C3DD49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE62963715D5824000E38649 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE0D503415D5AB6A006C7F16 /* IOKit.framework in Frameworks */,
+				BE63AC801CF681DA00C3DD49 /* HIDSpecification.framework in Frameworks */,
+				BE62963F15D5824000E38649 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE62962F15D5824000E38649 = {
+			isa = PBXGroup;
+			children = (
+				BE63AC951CF6B83200C3DD49 /* Documentation */,
+				BE62964415D5824000E38649 /* Cavalla */,
+				BE62963D15D5824000E38649 /* Frameworks */,
+				BE62963B15D5824000E38649 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE62963B15D5824000E38649 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE62963A15D5824000E38649 /* Cavalla.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE62963D15D5824000E38649 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE62964115D5824000E38649 /* AppKit.framework */,
+				BE62963E15D5824000E38649 /* Cocoa.framework */,
+				BE62964315D5824000E38649 /* Foundation.framework */,
+				BE0D503315D5AB6A006C7F16 /* IOKit.framework */,
+				BE63AC7F1CF681DA00C3DD49 /* HIDSpecification.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE62964415D5824000E38649 /* Cavalla */ = {
+			isa = PBXGroup;
+			children = (
+				BE63AC821CF6AAD000C3DD49 /* AppDelegate.swift */,
+				BE63AC831CF6AAD000C3DD49 /* CAVHIDDevice.swift */,
+				BE63AC841CF6AAD000C3DD49 /* CAVHIDElement.swift */,
+				BE63AC851CF6AAD000C3DD49 /* CAVHIDManager.swift */,
+				BE62966B15D583AE00E38649 /* Resources */,
+			);
+			path = Cavalla;
+			sourceTree = "<group>";
+		};
+		BE62966B15D583AE00E38649 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BE63AC8A1CF6AB2300C3DD49 /* Cavalla-Info.plist */,
+				BE63AC8E1CF6AB2C00C3DD49 /* InfoPlist.strings */,
+				BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */,
+			);
+			name = Resources;
+			path = Source/Resources;
+			sourceTree = "<group>";
+		};
+		BE63AC951CF6B83200C3DD49 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				BE63AC961CF6B85C00C3DD49 /* LICENSE */,
+				BE63AC971CF6C51D00C3DD49 /* README.md */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE62963915D5824000E38649 /* Cavalla */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE62965815D5824000E38649 /* Build configuration list for PBXNativeTarget "Cavalla" */;
+			buildPhases = (
+				BE62963615D5824000E38649 /* Sources */,
+				BE62963715D5824000E38649 /* Frameworks */,
+				BE62963815D5824000E38649 /* Resources */,
+				BE0D504C15D65441006C7F16 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cavalla;
+			productName = Cavalla;
+			productReference = BE62963A15D5824000E38649 /* Cavalla.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE62963115D5824000E38649 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CAV;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = OrderedBytes;
+				TargetAttributes = {
+					BE62963915D5824000E38649 = {
+						DevelopmentTeam = 72C3P5QCVR;
+					};
+				};
+			};
+			buildConfigurationList = BE62963415D5824000E38649 /* Build configuration list for PBXProject "Cavalla" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BE62962F15D5824000E38649;
+			productRefGroup = BE62963B15D5824000E38649 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE62963915D5824000E38649 /* Cavalla */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE62963815D5824000E38649 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE63AC931CF6AB2C00C3DD49 /* InfoPlist.strings in Resources */,
+				BE63AC941CF6AB2C00C3DD49 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE62963615D5824000E38649 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE63AC891CF6AAD000C3DD49 /* CAVHIDManager.swift in Sources */,
+				BE63AC871CF6AAD000C3DD49 /* CAVHIDDevice.swift in Sources */,
+				BE63AC881CF6AAD000C3DD49 /* CAVHIDElement.swift in Sources */,
+				BE63AC861CF6AAD000C3DD49 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BE63AC8E1CF6AB2C00C3DD49 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE63AC8F1CF6AB2C00C3DD49 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE63AC911CF6AB2C00C3DD49 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE62965615D5824000E38649 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		BE62965715D5824000E38649 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BE62965915D5824000E38649 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Cavalla/Cavalla-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.orderedbytes.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BE62965A15D5824000E38649 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Cavalla/Cavalla-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.orderedbytes.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE62963415D5824000E38649 /* Build configuration list for PBXProject "Cavalla" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE62965615D5824000E38649 /* Debug */,
+				BE62965715D5824000E38649 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE62965815D5824000E38649 /* Build configuration list for PBXNativeTarget "Cavalla" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE62965915D5824000E38649 /* Debug */,
+				BE62965A15D5824000E38649 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE62963115D5824000E38649 /* Project object */;
+}
