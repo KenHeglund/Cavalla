@@ -23,8 +23,6 @@ class CAVHIDManager: NSObject {
     /*==========================================================================*/
     func open() -> IOReturn {
         
-        // TODO: Change this function to throw instead of returning an IOReturn?
-        
         let options = IOOptionBits(kIOHIDOptionsTypeNone)
         guard let hidManagerRef = IOHIDManagerCreate( kCFAllocatorDefault, options )?.takeUnretainedValue() else { return KERN_FAILURE }
         

@@ -117,6 +117,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     /*==========================================================================*/
     func selectionShouldChangeInTableView( tableView: NSTableView ) -> Bool {
         
+        // After changing a cell in an NSTableView, a delayed message is sent to the table to change its selection to just the row containing the edited cell.  The following code defeats that selection change and allows all rows that were selected at the time of the value change to remain selected thereafter.  A table's selection belongs to the user, not AppKit.
+        
         if NSRunLoop.currentRunLoop().currentMode == nil {
             return true
         }
