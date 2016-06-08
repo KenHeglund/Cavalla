@@ -42,6 +42,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
         }
     }
     
+    // MARK: -
+    
+    /*==========================================================================*/
+    override init() {
+        NSValueTransformer.setValueTransformer( IsNotZeroTransformer(), forName: "IsNotZeroTransformer" )
+    }
+    
     // MARK: - NSNibAwaking implementation
     
     /*==========================================================================*/
