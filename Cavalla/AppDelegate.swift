@@ -42,6 +42,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
         }
     }
     
+    // MARK: -
+    
+    /*==========================================================================*/
+    override init() {
+        NSValueTransformer.setValueTransformer( IsNotZeroTransformer(), forName: "IsNotZeroTransformer" )
+    }
+    
     // MARK: - NSNibAwaking implementation
     
     /*==========================================================================*/
@@ -78,13 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
             let hidManager = CAVHIDManager()
             let status = hidManager.open()
             
-            if status == kIOReturnSuccess {
-                if let hidManagerRef = hidManager.hidManagerRef {
-                    let pointer = Unmanaged.passUnretained( hidManagerRef ).toOpaque()
-                    self.addressString = String( format: "@ %p", pointer )
-                }
-            }
-            else {
+            if status != kIOReturnSuccess {
                 self.addressString = String( format: "Error: 0x%08X (%d)", status, status )
             }
             
@@ -110,7 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
             object.setValue( newValue, forKey: key )
         }
         
-        self.inhibitTableSelectionChange = true;
+        self.inhibitTableSelectionChange = true
     }
     
     /*==========================================================================*/
@@ -123,12 +124,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     /*==========================================================================*/
     func selectionShouldChangeInTableView( tableView: NSTableView ) -> Bool {
         
+        // After changing a cell in an NSTableView, a delayed message is sent to the table to change its selection to just the row containing the edited cell.  The following code defeats that selection change and allows all rows that were selected at the time of the value change to remain selected thereafter.  A table's selection belongs to the user, not AppKit.
+        
         if NSRunLoop.currentRunLoop().currentMode == nil {
-            return true;
+            return true
         }
         
         if self.inhibitTableSelectionChange == false {
-            return true;
+            return true
         }
         
         self.inhibitTableSelectionChange = false

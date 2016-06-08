@@ -23,8 +23,6 @@ class CAVHIDManager: NSObject {
     /*==========================================================================*/
     func open() -> IOReturn {
         
-        // TODO: Change this function to throw instead of returning an IOReturn?
-        
         let options = IOOptionBits(kIOHIDOptionsTypeNone)
         guard let hidManagerRef = IOHIDManagerCreate( kCFAllocatorDefault, options )?.takeUnretainedValue() else { return KERN_FAILURE }
         
@@ -64,7 +62,11 @@ private func CAVHIDManagerDeviceAttachedHandler( context: UnsafeMutablePointer<V
     if LOG_ATTACH_AND_DETACH == true {
         let manufacturer = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDManufacturerKey )?.takeUnretainedValue() as? String ?? ""
         let product = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductKey )?.takeUnretainedValue() as? String ?? ""
-        print( "Device attached: \(product) (\(manufacturer)) [\(result)]" )
+        let vendorID = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDVendorIDKey )?.takeUnretainedValue() as? Int ?? 0
+        let productID = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductIDKey )?.takeUnretainedValue() as? Int ?? 0
+        let usagePage = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsagePageKey )?.takeUnretainedValue() as? Int ?? 0
+        let usage = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsageKey )?.takeUnretainedValue() as? Int ?? 0
+        print( "Device attached: \(product) (\(manufacturer)) \(vendorID):\(productID) \(usagePage):\(usage) [\(result)]" )
     }
     
     IOHIDDeviceRegisterRemovalCallback( hidDeviceRef, CAVHIDManagerDeviceRemovedHandler, context )

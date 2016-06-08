@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
@@ -788,13 +789,13 @@
                                         </textFieldCell>
                                     </textField>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="631">
-                                        <rect key="frame" x="32" y="20" width="220" height="330"/>
+                                        <rect key="frame" x="32" y="54" width="220" height="296"/>
                                         <clipView key="contentView" id="taO-QG-CuJ">
-                                            <rect key="frame" x="1" y="0.0" width="218" height="329"/>
+                                            <rect key="frame" x="1" y="0.0" width="218" height="295"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" typeSelect="NO" rowHeight="14" headerView="634" id="632">
-                                                    <rect key="frame" x="0.0" y="0.0" width="548" height="306"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="445" height="272"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -892,27 +893,6 @@
                                                                 <binding destination="938" name="value" keyPath="arrangedObjects.sizeString" id="954"/>
                                                             </connections>
                                                         </tableColumn>
-                                                        <tableColumn identifier="address" editable="NO" width="100" minWidth="100" maxWidth="200" id="962">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Address">
-                                                                <font key="font" metaFont="smallSystem"/>
-                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                            </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="963">
-                                                                <font key="font" metaFont="smallSystem"/>
-                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                            <sortDescriptor key="sortDescriptorPrototype" selector="compare:" sortKey="addressString"/>
-                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                            <connections>
-                                                                <binding destination="938" name="value" keyPath="arrangedObjects.addressString" id="965">
-                                                                    <dictionary key="options">
-                                                                        <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                                    </dictionary>
-                                                                </binding>
-                                                            </connections>
-                                                        </tableColumn>
                                                     </tableColumns>
                                                     <connections>
                                                         <binding destination="891" name="enabled" keyPath="selectionIndexes.count" id="908"/>
@@ -923,7 +903,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="633">
-                                            <rect key="frame" x="1" y="313" width="218" height="16"/>
+                                            <rect key="frame" x="1" y="279" width="218" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="635">
@@ -931,7 +911,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <tableHeaderView key="headerView" id="634">
-                                            <rect key="frame" x="0.0" y="0.0" width="548" height="23"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="445" height="23"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableHeaderView>
                                     </scrollView>
@@ -965,6 +945,27 @@
                                             <binding destination="891" name="value" keyPath="selection.elementCount" id="yGq-hJ-ecM"/>
                                         </connections>
                                     </textField>
+                                    <searchField wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tx8-nV-cPk">
+                                        <rect key="frame" x="32" y="21" width="218" height="19"/>
+                                        <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter by Name" usesSingleLineMode="YES" bezelStyle="round" id="Vkq-1R-NXt">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </searchFieldCell>
+                                        <connections>
+                                            <binding destination="938" name="enabled" keyPath="arrangedObjects.@count" id="2Rv-vB-0n8">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">IsNotZeroTransformer</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="938" name="predicate" keyPath="filterPredicate" id="ibd-nR-SXJ">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayName">Filter by Name</string>
+                                                    <string key="NSPredicateFormat">nameString contains[c] $value</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </searchField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="579" firstAttribute="baseline" secondItem="598" secondAttribute="baseline" id="669"/>
@@ -992,7 +993,6 @@
                                     <constraint firstItem="556" firstAttribute="top" secondItem="542" secondAttribute="bottom" constant="20" id="739"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="565" secondAttribute="trailing" constant="20" symbolic="YES" id="741"/>
                                     <constraint firstAttribute="trailing" secondItem="631" secondAttribute="trailing" constant="18" id="754"/>
-                                    <constraint firstAttribute="bottom" secondItem="631" secondAttribute="bottom" constant="20" symbolic="YES" id="778"/>
                                     <constraint firstItem="790" firstAttribute="baseline" secondItem="542" secondAttribute="baseline" id="793"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="790" secondAttribute="trailing" constant="18" id="796"/>
                                     <constraint firstItem="790" firstAttribute="leading" secondItem="542" secondAttribute="trailing" constant="11" id="863"/>
@@ -1006,6 +1006,10 @@
                                     <constraint firstItem="631" firstAttribute="top" secondItem="614" secondAttribute="bottom" constant="8" symbolic="YES" id="992"/>
                                     <constraint firstItem="969" firstAttribute="leading" secondItem="590" secondAttribute="leading" id="995"/>
                                     <constraint firstItem="969" firstAttribute="leading" secondItem="631" secondAttribute="leading" id="997"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tx8-nV-cPk" secondAttribute="bottom" constant="21" id="Ggo-mF-T5W"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tx8-nV-cPk" secondAttribute="trailing" constant="20" symbolic="YES" id="PHH-v8-kL2"/>
+                                    <constraint firstItem="Tx8-nV-cPk" firstAttribute="leading" secondItem="631" secondAttribute="leading" id="p1P-75-cVS"/>
+                                    <constraint firstItem="Tx8-nV-cPk" firstAttribute="top" secondItem="631" secondAttribute="bottom" constant="14" id="v6d-wG-FCo"/>
                                 </constraints>
                             </customView>
                             <customView id="656">

@@ -14,7 +14,7 @@ class CAVHIDElement: NSObject {
     private unowned let device: CAVHIDDevice
     
     let hidElementRef: IOHIDElementRef
-    let cookie: IOHIDElementCookie
+    dynamic var cookie: IOHIDElementCookie
     let canEnable: Bool
     
     var enabled: Bool {
@@ -23,7 +23,7 @@ class CAVHIDElement: NSObject {
             return self.device.queueContainsHIDElementRef( self.hidElementRef )
         }
         
-        set(newValue) {
+        set {
             
             guard self.canEnable else { return }
             
@@ -40,10 +40,9 @@ class CAVHIDElement: NSObject {
         }
     }
     
-    let nameString: String
-    let usageString: String
-    let sizeString: String
-    let addressString: String
+    dynamic var nameString: String
+    dynamic var usageString: String
+    dynamic var sizeString: String
     
     /*==========================================================================*/
     init( withHIDElementRef hidElementRef: IOHIDElementRef, device: CAVHIDDevice ) {
@@ -54,15 +53,12 @@ class CAVHIDElement: NSObject {
         self.cookie = IOHIDElementGetCookie( hidElementRef )
         self.canEnable = ( IOHIDElementGetReportSize( hidElementRef ) > 0 )
         
-        let usage = Int( IOHIDElementGetUsage( hidElementRef ) )
-        let usagePage = Int( IOHIDElementGetUsagePage( hidElementRef ) )
+        let usage = Int( IOHIDElementGetUsage( hidElementRef ) & 0x0000FFFF )
+        let usagePage = Int( IOHIDElementGetUsagePage( hidElementRef ) & 0x0000FFFF )
         self.nameString = HIDSpecification.nameForUsagePage( usagePage, usage: usage ) ?? "Custom Control"
         self.usageString = String( format: "0x%04X:0x%04X", usagePage, usage )
         
         let size = Int( IOHIDElementGetReportSize( hidElementRef ) )
         self.sizeString = String( format: "%lu", size )
-        
-        let pointer = Unmanaged.passUnretained( hidElementRef ).toOpaque()
-        self.addressString = String( format: "%p", pointer )
     }
 }
