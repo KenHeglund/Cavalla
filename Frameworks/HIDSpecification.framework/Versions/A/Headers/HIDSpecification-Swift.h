@@ -100,10 +100,8 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 
 SWIFT_CLASS("_TtC16HIDSpecification16HIDSpecification")
 @interface HIDSpecification : NSObject
-+ (NSString * _Nonnull)nameForUsagePage:(NSInteger)usagePage usage:(NSInteger)usage;
-+ (NSString * _Nonnull)nameForUsagePage:(NSInteger)usagePage;
-+ (BOOL)doubtfulForUsagePage:(NSInteger)usagePage usage:(NSInteger)usage;
-+ (BOOL)spuriousForUsagePage:(NSInteger)usagePage usage:(NSInteger)usage;
++ (NSString * _Nullable)nameForUsagePage:(NSInteger)usagePage usage:(NSInteger)usage;
++ (NSString * _Nullable)nameForUsagePage:(NSInteger)usagePage;
 + (BOOL)isStandardUsagePage:(NSInteger)usagePage usage:(NSInteger)usage;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

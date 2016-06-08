@@ -56,7 +56,7 @@ class CAVHIDElement: NSObject {
         
         let usage = Int( IOHIDElementGetUsage( hidElementRef ) )
         let usagePage = Int( IOHIDElementGetUsagePage( hidElementRef ) )
-        self.nameString = HIDSpecification.nameForUsagePage( usagePage, usage: usage )
+        self.nameString = HIDSpecification.nameForUsagePage( usagePage, usage: usage ) ?? "Custom Control"
         self.usageString = String( format: "0x%04X:0x%04X", usagePage, usage )
         
         let size = Int( IOHIDElementGetReportSize( hidElementRef ) )
