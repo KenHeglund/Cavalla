@@ -43,7 +43,6 @@ class CAVHIDElement: NSObject {
     let nameString: String
     let usageString: String
     let sizeString: String
-    let addressString: String
     
     /*==========================================================================*/
     init( withHIDElementRef hidElementRef: IOHIDElementRef, device: CAVHIDDevice ) {
@@ -61,8 +60,5 @@ class CAVHIDElement: NSObject {
         
         let size = Int( IOHIDElementGetReportSize( hidElementRef ) )
         self.sizeString = String( format: "%lu", size )
-        
-        let pointer = Unmanaged.passUnretained( hidElementRef ).toOpaque()
-        self.addressString = String( format: "%p", pointer )
     }
 }

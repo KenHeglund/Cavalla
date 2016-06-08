@@ -78,13 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
             let hidManager = CAVHIDManager()
             let status = hidManager.open()
             
-            if status == kIOReturnSuccess {
-                if let hidManagerRef = hidManager.hidManagerRef {
-                    let pointer = Unmanaged.passUnretained( hidManagerRef ).toOpaque()
-                    self.addressString = String( format: "@ %p", pointer )
-                }
-            }
-            else {
+            if status != kIOReturnSuccess {
                 self.addressString = String( format: "Error: 0x%08X (%d)", status, status )
             }
             
