@@ -14,7 +14,7 @@ class CAVHIDElement: NSObject {
     private unowned let device: CAVHIDDevice
     
     let hidElementRef: IOHIDElementRef
-    let cookie: IOHIDElementCookie
+    dynamic var cookie: IOHIDElementCookie
     let canEnable: Bool
     
     var enabled: Bool {
@@ -23,7 +23,7 @@ class CAVHIDElement: NSObject {
             return self.device.queueContainsHIDElementRef( self.hidElementRef )
         }
         
-        set(newValue) {
+        set {
             
             guard self.canEnable else { return }
             
@@ -40,9 +40,9 @@ class CAVHIDElement: NSObject {
         }
     }
     
-    let nameString: String
-    let usageString: String
-    let sizeString: String
+    dynamic var nameString: String
+    dynamic var usageString: String
+    dynamic var sizeString: String
     
     /*==========================================================================*/
     init( withHIDElementRef hidElementRef: IOHIDElementRef, device: CAVHIDDevice ) {

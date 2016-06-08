@@ -100,7 +100,7 @@ class CAVHIDDevice: NSObject {
             
             let mutableElements = NSMutableArray()
             
-            let elementCount = CFArrayGetCount( elementArray );
+            let elementCount = CFArrayGetCount( elementArray )
             for index in 0 ..< elementCount {
                 
                 let arrayValue: UnsafePointer<Void> = CFArrayGetValueAtIndex( elementArray, index )
@@ -190,5 +190,5 @@ private func CAVHIDDeviceValueAvailableHandler( context: UnsafeMutablePointer<Vo
         
         notificationCenter.postNotificationName( CAVHIDDeviceDidReceiveValueNotification, object: device, userInfo: userInfo )
         
-    } while ( true );
+    } while ( true )
 }

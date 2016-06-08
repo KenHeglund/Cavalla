@@ -104,7 +104,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
             object.setValue( newValue, forKey: key )
         }
         
-        self.inhibitTableSelectionChange = true;
+        self.inhibitTableSelectionChange = true
     }
     
     /*==========================================================================*/
@@ -118,11 +118,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     func selectionShouldChangeInTableView( tableView: NSTableView ) -> Bool {
         
         if NSRunLoop.currentRunLoop().currentMode == nil {
-            return true;
+            return true
         }
         
         if self.inhibitTableSelectionChange == false {
-            return true;
+            return true
         }
         
         self.inhibitTableSelectionChange = false
