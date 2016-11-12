@@ -14,7 +14,7 @@ private let CAVHIDManagerDevicesKey = "devices"
 
 class CAVHIDManager: NSObject {
     
-    private(set) var hidManagerRef: IOHIDManagerRef? = nil
+    fileprivate(set) var hidManagerRef: IOHIDManager? = nil
     
     dynamic var devices: NSMutableSet = NSMutableSet()
     
@@ -24,18 +24,18 @@ class CAVHIDManager: NSObject {
     func open() -> IOReturn {
         
         let options = IOOptionBits(kIOHIDOptionsTypeNone)
-        guard let hidManagerRef = IOHIDManagerCreate( kCFAllocatorDefault, options )?.takeUnretainedValue() else { return KERN_FAILURE }
+        let hidManager = IOHIDManagerCreate( kCFAllocatorDefault, options )
         
-        self.hidManagerRef = hidManagerRef
+        self.hidManagerRef = hidManager
         
-        let result = IOHIDManagerOpen( hidManagerRef, IOOptionBits(kIOHIDOptionsTypeNone) )
+        let result = IOHIDManagerOpen( hidManager, IOOptionBits(kIOHIDOptionsTypeNone) )
         guard result == kIOReturnSuccess else { return result }
         
-        let context = UnsafeMutablePointer<Void>( Unmanaged.passUnretained( self ).toOpaque() )
+        let context = Unmanaged.passUnretained( self ).toOpaque()
         
-        IOHIDManagerSetDeviceMatching( hidManagerRef, [:] )
-        IOHIDManagerRegisterDeviceMatchingCallback( hidManagerRef, CAVHIDManagerDeviceAttachedHandler, context )
-        IOHIDManagerScheduleWithRunLoop( hidManagerRef, CFRunLoopGetMain(), kCFRunLoopDefaultMode )
+        IOHIDManagerSetDeviceMatching( hidManager, nil )
+        IOHIDManagerRegisterDeviceMatchingCallback( hidManager, CAVHIDManagerDeviceAttachedHandler, context )
+        IOHIDManagerScheduleWithRunLoop( hidManager, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue )
         
         return kIOReturnSuccess
     }
@@ -45,10 +45,10 @@ class CAVHIDManager: NSObject {
         
         let hidManagerRef = self.hidManagerRef
         
-        IOHIDManagerClose( hidManagerRef, IOOptionBits(kIOHIDOptionsTypeNone) )
-        IOHIDManagerUnscheduleFromRunLoop( hidManagerRef, CFRunLoopGetMain(), kCFRunLoopDefaultMode )
+        IOHIDManagerClose( hidManagerRef!, IOOptionBits(kIOHIDOptionsTypeNone) )
+        IOHIDManagerUnscheduleFromRunLoop( hidManagerRef!, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue )
         
-        self.mutableSetValueForKey( CAVHIDManagerDevicesKey ).removeAllObjects()
+        self.mutableSetValue( forKey: CAVHIDManagerDevicesKey ).removeAllObjects()
         
         self.hidManagerRef = nil
     }
@@ -57,47 +57,50 @@ class CAVHIDManager: NSObject {
 let LOG_ATTACH_AND_DETACH = true
 
 /*==========================================================================*/
-private func CAVHIDManagerDeviceAttachedHandler( context: UnsafeMutablePointer<Void>, result: IOReturn, sender: UnsafeMutablePointer<Void>, hidDeviceRef: IOHIDDevice! ) {
+private func CAVHIDManagerDeviceAttachedHandler( context: UnsafeMutableRawPointer?, result: IOReturn, sender: UnsafeMutableRawPointer?, hidDeviceRef: IOHIDDevice ) {
     
     if LOG_ATTACH_AND_DETACH == true {
-        let manufacturer = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDManufacturerKey )?.takeUnretainedValue() as? String ?? ""
-        let product = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductKey )?.takeUnretainedValue() as? String ?? ""
-        let vendorID = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDVendorIDKey )?.takeUnretainedValue() as? Int ?? 0
-        let productID = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductIDKey )?.takeUnretainedValue() as? Int ?? 0
-        let usagePage = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsagePageKey )?.takeUnretainedValue() as? Int ?? 0
-        let usage = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsageKey )?.takeUnretainedValue() as? Int ?? 0
+        let manufacturer = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDManufacturerKey as CFString ) as? String ?? ""
+        let product = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductKey as CFString ) as? String ?? ""
+        let vendorID = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDVendorIDKey as CFString ) as? Int ?? 0
+        let productID = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductIDKey as CFString ) as? Int ?? 0
+        let usagePage = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsagePageKey as CFString ) as? Int ?? 0
+        let usage = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsageKey as CFString ) as? Int ?? 0
         print( "Device attached: \(product) (\(manufacturer)) \(vendorID):\(productID) \(usagePage):\(usage) [\(result)]" )
     }
     
     IOHIDDeviceRegisterRemovalCallback( hidDeviceRef, CAVHIDManagerDeviceRemovedHandler, context )
     
-    let manager: CAVHIDManager = Unmanaged<CAVHIDManager>.fromOpaque( COpaquePointer( context ) ).takeUnretainedValue()
-    
     guard let device = CAVHIDDevice( withHIDDeviceRef: hidDeviceRef ) else { return }
-    manager.mutableSetValueForKey( CAVHIDManagerDevicesKey ).addObject( device )
+    
+    guard let context = context else { return }
+    let manager = Unmanaged<CAVHIDManager>.fromOpaque( context ).takeUnretainedValue()
+    manager.mutableSetValue( forKey: CAVHIDManagerDevicesKey ).add( device )
 }
 
 /*==========================================================================*/
-private func CAVHIDManagerDeviceRemovedHandler( context: UnsafeMutablePointer<Void>, result: IOReturn, hidDeviceRefPointer: UnsafeMutablePointer<Void> ) {
-
-    let hidDeviceRef: IOHIDDeviceRef = Unmanaged<IOHIDDeviceRef>.fromOpaque( COpaquePointer( hidDeviceRefPointer ) ).takeUnretainedValue()
+private func CAVHIDManagerDeviceRemovedHandler( context: UnsafeMutableRawPointer?, result: IOReturn, hidDeviceRefPointer: UnsafeMutableRawPointer? ) {
+    
+    guard let hidDevicePointer = hidDeviceRefPointer else { return }
+    let hidDevice = Unmanaged<IOHIDDevice>.fromOpaque( hidDevicePointer ).takeUnretainedValue()
     
     if LOG_ATTACH_AND_DETACH == true {
-        let manufacturer = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDManufacturerKey )?.takeUnretainedValue() as? String ?? ""
-        let product = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductKey )?.takeUnretainedValue() as? String ?? ""
+        let manufacturer = CAVHIDDeviceGetProperty( hidDevice, kIOHIDManufacturerKey as CFString ) as? String ?? ""
+        let product = CAVHIDDeviceGetProperty( hidDevice, kIOHIDProductKey as CFString ) as? String ?? ""
         print( "Device removed: \(product) (\(manufacturer)) [\(result)]" )
     }
-
-    let manager: CAVHIDManager = Unmanaged<CAVHIDManager>.fromOpaque( COpaquePointer( context ) ).takeUnretainedValue()
+    
+    guard let context = context else { return }
+    let manager = Unmanaged<CAVHIDManager>.fromOpaque( context ).takeUnretainedValue()
     
     for object in manager.devices {
         
         let device = object as! CAVHIDDevice
-        if device.hidDeviceRef !== hidDeviceRef {
+        if device.hidDeviceRef !== hidDevice {
             continue
         }
         
-        manager.mutableSetValueForKey( CAVHIDManagerDevicesKey ).removeObject( device )
+        manager.mutableSetValue( forKey: CAVHIDManagerDevicesKey ).remove( device )
         return
     }
 }

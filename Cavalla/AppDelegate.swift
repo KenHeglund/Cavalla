@@ -19,15 +19,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     dynamic var openCloseManagerButtonTitle = AppDelegate.OpenManagerButtonTitle
     dynamic var addressString = ""
     
-    private var inhibitTableSelectionChange = false
-    private var eventViewAttributes: [String:AnyObject] = [:]
+    fileprivate var inhibitTableSelectionChange = false
+    fileprivate var eventViewAttributes: [String:AnyObject] = [:]
     
     @IBOutlet var window: NSWindow? = nil
     @IBOutlet var eventView: NSTextView? = nil
     @IBOutlet var deviceArrayController: NSArrayController? = nil
     @IBOutlet var elementArrayController: NSArrayController? = nil
     
-    dynamic var deviceSelectionIndexes: NSIndexSet = NSIndexSet() {
+    dynamic var deviceSelectionIndexes: IndexSet = IndexSet() {
         
         didSet {
             
@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
             
             for index in 0..<arrangedObjects.count {
                 
-                if self.deviceSelectionIndexes.containsIndex( index ) == false {
+                if self.deviceSelectionIndexes.contains( index ) == false {
                     arrangedObjects[index].dequeueAllElements()
                 }
             }
@@ -46,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     
     /*==========================================================================*/
     override init() {
-        NSValueTransformer.setValueTransformer( IsNotZeroTransformer(), forName: "IsNotZeroTransformer" )
+        ValueTransformer.setValueTransformer( IsNotZeroTransformer(), forName: .isNotZeroTransformer )
     }
     
     // MARK: - NSNibAwaking implementation
@@ -55,14 +55,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     override func awakeFromNib() {
         
         let deviceSortDescriptor = NSSortDescriptor( key: CAVHIDDeviceLongProductNameKey, ascending: true, comparator: {
-            $0.localizedCaseInsensitiveCompare( $1 as! String )
+            ($0 as AnyObject).localizedCaseInsensitiveCompare( $1 as! String )
         })
         
         self.deviceArrayController?.sortDescriptors = [ deviceSortDescriptor ]
         
-        NSNotificationCenter.defaultCenter().addObserver( self, selector: #selector(AppDelegate.eventNotification(_:)), name: CAVHIDDeviceDidReceiveValueNotification, object: nil )
+        NotificationCenter.default.addObserver( self, selector: #selector(AppDelegate.eventNotification(_:)), name: NSNotification.Name(rawValue: CAVHIDDeviceDidReceiveValueNotification), object: nil )
         
-        let font = NSFont( name: "Courier New", size: 13.0 ) ?? NSFont.userFixedPitchFontOfSize( 13.0 )!
+        let font = NSFont( name: "Courier New", size: 13.0 ) ?? NSFont.userFixedPitchFont( ofSize: 13.0 )!
         
         self.eventViewAttributes = [ NSFontAttributeName : font ]
     }
@@ -70,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     // MARK: - IBAction implementations
     
     /*==========================================================================*/
-    @IBAction func doOpenCloseHidManager( sender: AnyObject? ) {
+    @IBAction func doOpenCloseHidManager( _ sender: AnyObject? ) {
         
         if let hidManager = self.hidManager {
             
@@ -95,7 +95,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     }
 
     /*==========================================================================*/
-    @IBAction func doChangeElementTableControl( sender: AnyObject? ) {
+    @IBAction func doChangeElementTableControl( _ sender: AnyObject? ) {
         
         guard let tableView = sender as? NSTableView else { return }
         guard let arrangedObjects = self.elementArrayController?.arrangedObjects as? NSArray else { return }
@@ -104,29 +104,29 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
         let key = tableView.tableColumns[clickedColumn].identifier
         
         let clickedRow = tableView.clickedRow
-        let newValue = arrangedObjects[clickedRow].valueForKey( key )
+        let newValue = (arrangedObjects[clickedRow] as AnyObject).value( forKey: key )
         
-        let selectedObjects = arrangedObjects.objectsAtIndexes( tableView.selectedRowIndexes )
+        let selectedObjects = arrangedObjects.objects( at: tableView.selectedRowIndexes )
         for object in selectedObjects {
-            object.setValue( newValue, forKey: key )
+            (object as AnyObject).setValue( newValue, forKey: key )
         }
         
         self.inhibitTableSelectionChange = true
     }
     
     /*==========================================================================*/
-    @IBAction func doClearEvents( sender: AnyObject? ) {
+    @IBAction func doClearEvents( _ sender: AnyObject? ) {
         self.eventView?.string = ""
     }
     
     // MARK: - NSTableViewDelegate implementation
     
     /*==========================================================================*/
-    func selectionShouldChangeInTableView( tableView: NSTableView ) -> Bool {
+    func selectionShouldChange( in tableView: NSTableView ) -> Bool {
         
         // After changing a cell in an NSTableView, a delayed message is sent to the table to change its selection to just the row containing the edited cell.  The following code defeats that selection change and allows all rows that were selected at the time of the value change to remain selected thereafter.  A table's selection belongs to the user, not AppKit.
         
-        if NSRunLoop.currentRunLoop().currentMode == nil {
+        if RunLoop.current.currentMode == nil {
             return true
         }
         
@@ -142,13 +142,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     // MARK: - AppDelegate implementation
     
     /*==========================================================================*/
-    func eventNotification( notification: NSNotification ) {
+    func eventNotification( _ notification: Notification ) {
         
         guard let stringValue = notification.userInfo?[CAVHIDDeviceValueAsStringKey] as? String else { return }
         guard let textStorage = self.eventView?.textStorage else { return }
 
         let attributedString = NSAttributedString( string: stringValue + "\n", attributes: self.eventViewAttributes )
-        textStorage.appendAttributedString( attributedString )
+        textStorage.append( attributedString )
         
         let lastCharacter = NSRange( location: ( textStorage.length - 1 ), length: 1 )
         self.eventView?.scrollRangeToVisible( lastCharacter )
