@@ -11,9 +11,9 @@ import HIDSpecification
 
 class CAVHIDElement: NSObject {
     
-    private unowned let device: CAVHIDDevice
+    fileprivate unowned let device: CAVHIDDevice
     
-    let hidElementRef: IOHIDElementRef
+    let hidElementRef: IOHIDElement
     dynamic var cookie: IOHIDElementCookie
     let canEnable: Bool
     
@@ -45,7 +45,7 @@ class CAVHIDElement: NSObject {
     dynamic var sizeString: String
     
     /*==========================================================================*/
-    init( withHIDElementRef hidElementRef: IOHIDElementRef, device: CAVHIDDevice ) {
+    init( withHIDElementRef hidElementRef: IOHIDElement, device: CAVHIDDevice ) {
         
         self.device = device
         self.hidElementRef = hidElementRef

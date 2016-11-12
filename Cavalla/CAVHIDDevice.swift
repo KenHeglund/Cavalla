@@ -9,17 +9,17 @@ import IOKit.hid
 
 /*==========================================================================*/
 
-extension IOHIDValueRef {
+extension IOHIDValue {
     
     func valueAsString() -> String {
         
-        guard let hidElementRef = IOHIDValueGetElement( self )?.takeUnretainedValue() else { return "<value has no associated element>" }
+        guard let hidElementRef = CAVHIDValueGetElement( self ) else { return "<value has no associated element>" }
         let elementCookie = IOHIDElementGetCookie( hidElementRef )
         let longValueSize = IOHIDValueGetLength( self )
         
         var stringValue = String( format: "Cookie %u:", elementCookie )
         
-        if ( longValueSize > sizeof(Int32) ) {
+        if ( longValueSize > MemoryLayout<Int32>.size ) {
             
             let longValueSource = IOHIDValueGetBytePtr( self )
             for index in 0 ..< longValueSize {
@@ -46,34 +46,35 @@ let CAVHIDDeviceLongProductNameKey = "longProductName"
 
 class CAVHIDDevice: NSObject {
 
-    let hidDeviceRef: IOHIDDeviceRef
-    private let hidQueueRef: IOHIDQueueRef!
+    let hidDeviceRef: IOHIDDevice
+    fileprivate var hidQueueRef: IOHIDQueue?
     
     dynamic var longProductName = ""
     dynamic var vendorIDString = "n/a"
     dynamic var productIDString = "n/a"
     dynamic var versionString = "n/a"
     
-    dynamic var elements = NSArray()
+    dynamic var elements: [CAVHIDElement] = []
     dynamic var elementCount: Int { return self.elements.count }
     
     // MARK: - Init / Deinit
     
     /*==========================================================================*/
-    init?( withHIDDeviceRef hidDeviceRef: IOHIDDeviceRef ) {
+    init?( withHIDDeviceRef hidDeviceRef: IOHIDDevice ) {
         
         self.hidDeviceRef = hidDeviceRef
         
         let queueDepth = 50
-        self.hidQueueRef = IOHIDQueueCreate( kCFAllocatorDefault, hidDeviceRef, queueDepth, IOOptionBits(kIOHIDOptionsTypeNone) )?.takeUnretainedValue()
+        let options = IOOptionBits(kIOHIDOptionsTypeNone)
+        guard let queue = IOHIDQueueCreate( kCFAllocatorDefault, hidDeviceRef, queueDepth, options ) else { return nil }
+        
+        self.hidQueueRef = queue
         
         super.init()
         
-        guard let queue = self.hidQueueRef else { return nil }
-        
-        let context = UnsafeMutablePointer<Void>( Unmanaged.passUnretained( self ).toOpaque() )
+        let context = Unmanaged.passUnretained( self ).toOpaque()
         IOHIDQueueRegisterValueAvailableCallback( queue, CAVHIDDeviceValueAvailableHandler, context )
-        IOHIDQueueScheduleWithRunLoop( queue, CFRunLoopGetMain(), kCFRunLoopDefaultMode )
+        IOHIDQueueScheduleWithRunLoop( queue, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue )
         
         let integerPropertyFormat = "0x%04lX (%ld)"
         
@@ -95,79 +96,78 @@ class CAVHIDDevice: NSObject {
         let usage = self.intPropertyFromDevice( kIOHIDPrimaryUsageKey ) ?? 0
         self.longProductName = String( format: "%@ (%@) [%ld:%ld]", productString, manufacturerString, usagePage, usage )
         
-        let array: CFArray? = IOHIDDeviceCopyMatchingElements( hidDeviceRef, [:], IOOptionBits(kIOHIDOptionsTypeNone) )?.takeUnretainedValue()
-        if let elementArray = array {
-            
-            let mutableElements = NSMutableArray()
-            
-            let elementCount = CFArrayGetCount( elementArray )
-            for index in 0 ..< elementCount {
-                
-                let arrayValue: UnsafePointer<Void> = CFArrayGetValueAtIndex( elementArray, index )
-                let elementRef: IOHIDElement = Unmanaged<IOHIDElement>.fromOpaque( COpaquePointer( arrayValue ) ).takeUnretainedValue()
-                
-                mutableElements.addObject( CAVHIDElement( withHIDElementRef: elementRef, device: self ) )
-            }
-            
-            self.elements = mutableElements
+        guard let array = IOHIDDeviceCopyMatchingElements( hidDeviceRef, nil, options ) as? NSArray else { return }
+        guard let elementRefArray = array as? [IOHIDElement] else { return }
+        
+        var elements: [CAVHIDElement] = []
+        
+        for element in elementRefArray {
+            elements.append( CAVHIDElement( withHIDElementRef: element, device: self ) )
         }
+        
+        self.elements = elements
     }
     
     /*==========================================================================*/
     deinit {
         
-        let hidQueueRef = self.hidQueueRef
-        
-        IOHIDQueueStop( hidQueueRef )
-        IOHIDQueueUnscheduleFromRunLoop( hidQueueRef, CFRunLoopGetMain(), kCFRunLoopDefaultMode )
+        if let queue = self.hidQueueRef {
+            
+            IOHIDQueueStop( queue )
+            IOHIDQueueUnscheduleFromRunLoop( queue, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue )
+            
+            // A IOHIDQueue apparently holds a reference to its device to allow it to remove itself from the device when the queue is deallocated.  If the device is deallocated first, it looks like that reference becomes a dangling pointer which will cause a bad access exception when the queue is deallocated.  To force the deallocations to occur in the correct sequence, the reference to the queue is nil'd here before the ivars are destroyed.
+            self.hidQueueRef = nil
+        }
     }
     
     // MARK: - CAVHIDDevice implementation
     
     /*==========================================================================*/
-    func enqueueHIDElementRef( hidElementRef: IOHIDElementRef ) {
+    func enqueueHIDElementRef( _ hidElementRef: IOHIDElement ) {
         
-        let hidQueueRef = self.hidQueueRef
+        guard let queue = self.hidQueueRef else { return }
         
-        IOHIDQueueStop( hidQueueRef )
-        IOHIDQueueAddElement( hidQueueRef, hidElementRef )
-        IOHIDQueueStart( hidQueueRef )
+        IOHIDQueueStop( queue )
+        IOHIDQueueAddElement( queue, hidElementRef )
+        IOHIDQueueStart( queue )
     }
 
     /*==========================================================================*/
-    func dequeueHIDElementRef( hidElementRef: IOHIDElementRef ) {
+    func dequeueHIDElementRef( _ hidElementRef: IOHIDElement ) {
         
-        let hidQueueRef = self.hidQueueRef
+        guard let queue = self.hidQueueRef else { return }
         
-        IOHIDQueueStop( hidQueueRef )
-        IOHIDQueueRemoveElement( hidQueueRef, hidElementRef )
-        IOHIDQueueStart( hidQueueRef )
+        IOHIDQueueStop( queue )
+        IOHIDQueueRemoveElement( queue, hidElementRef )
+        IOHIDQueueStart( queue )
     }
     
     /*==========================================================================*/
     func dequeueAllElements() {
         
-        for element in self.elements as! [CAVHIDElement] {
+        for element in self.elements {
             element.enabled = false
         }
     }
     
     /*==========================================================================*/
-    func queueContainsHIDElementRef( hidElementRef: IOHIDElementRef ) -> Bool {
-        return IOHIDQueueContainsElement( self.hidQueueRef, hidElementRef )
+    func queueContainsHIDElementRef( _ hidElementRef: IOHIDElement ) -> Bool {
+        guard let queue = self.hidQueueRef else { return false }
+        return IOHIDQueueContainsElement( queue, hidElementRef )
     }
     
     
     // MARK: - CAVHIDDevice internal
     
     /*==========================================================================*/
-    private func stringPropertyFromDevice( key: String ) -> String? {
-        return ( IOHIDDeviceGetProperty( self.hidDeviceRef, key )?.takeUnretainedValue() as? String )
+    fileprivate func stringPropertyFromDevice( _ key: String ) -> String? {
+        return ( CAVHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? String )
     }
     
     /*==========================================================================*/
-    private func intPropertyFromDevice( key: String ) -> Int? {
-        return ( IOHIDDeviceGetProperty( self.hidDeviceRef, key )?.takeUnretainedValue() as? Int )
+    fileprivate func intPropertyFromDevice( _ key: String ) -> Int? {
+        return ( CAVHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? Int )
     }
     
 }
@@ -175,20 +175,21 @@ class CAVHIDDevice: NSObject {
 // MARK: -
 
 /*==========================================================================*/
-private func CAVHIDDeviceValueAvailableHandler( context: UnsafeMutablePointer<Void>, result: IOReturn, sender: UnsafeMutablePointer<Void> ) {
+private func CAVHIDDeviceValueAvailableHandler( context: UnsafeMutableRawPointer?, result: IOReturn, sender: UnsafeMutableRawPointer? ) {
     
-    let device: CAVHIDDevice = Unmanaged<CAVHIDDevice>.fromOpaque( COpaquePointer( context ) ).takeUnretainedValue()
-    let hidQueueRef = device.hidQueueRef
+    guard let context = context else { return }
+    let device = Unmanaged<CAVHIDDevice>.fromOpaque( context ).takeUnretainedValue()
+    guard let queue = device.hidQueueRef else { return }
     
-    let notificationCenter = NSNotificationCenter.defaultCenter()
+    let notificationCenter = NotificationCenter.default
     
     repeat {
         
-        guard let hidValueRef = IOHIDQueueCopyNextValueWithTimeout( hidQueueRef, 0.0 )?.takeUnretainedValue() else { return }
+        guard let hidValueRef = CAVHIDQueueCopyNextValueWithTimeout( queue, 0.0 ) else { return }
         
         let userInfo = [ CAVHIDDeviceValueAsStringKey : hidValueRef.valueAsString() ]
         
-        notificationCenter.postNotificationName( CAVHIDDeviceDidReceiveValueNotification, object: device, userInfo: userInfo )
+        notificationCenter.post( name: Notification.Name(rawValue: CAVHIDDeviceDidReceiveValueNotification), object: device, userInfo: userInfo )
         
     } while ( true )
 }
