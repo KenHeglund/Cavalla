@@ -8,15 +8,13 @@ import Foundation
 
 /*==========================================================================*/
 
-private let CAVHIDManagerDevicesKey = "devices"
-
-/*==========================================================================*/
-
 class CAVHIDManager: NSObject {
     
     fileprivate(set) var hidManagerRef: IOHIDManager? = nil
     
     dynamic var devices: NSMutableSet = NSMutableSet()
+    
+    public static let devicesKey = "devices"
     
     // MARK: - CAVHIDManager implementation
     
@@ -48,7 +46,7 @@ class CAVHIDManager: NSObject {
         IOHIDManagerClose( hidManagerRef!, IOOptionBits(kIOHIDOptionsTypeNone) )
         IOHIDManagerUnscheduleFromRunLoop( hidManagerRef!, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue )
         
-        self.mutableSetValue( forKey: CAVHIDManagerDevicesKey ).removeAllObjects()
+        self.mutableSetValue( forKey: CAVHIDManager.devicesKey ).removeAllObjects()
         
         self.hidManagerRef = nil
     }
@@ -80,7 +78,7 @@ private func CAVHIDManagerDeviceAttachedHandler( context: UnsafeMutableRawPointe
             
             IOHIDDeviceRegisterRemovalCallback( hidDeviceRef, CAVHIDManagerDeviceRemovedHandler, context )
             
-            manager.mutableSetValue( forKey: CAVHIDManagerDevicesKey ).add( device )
+            manager.mutableSetValue( forKey: CAVHIDManager.devicesKey ).add( device )
         }
     }
 }
@@ -107,7 +105,7 @@ private func CAVHIDManagerDeviceRemovedHandler( context: UnsafeMutableRawPointer
             continue
         }
         
-        manager.mutableSetValue( forKey: CAVHIDManagerDevicesKey ).remove( device )
+        manager.mutableSetValue( forKey: CAVHIDManager.devicesKey ).remove( device )
         return
     }
 }

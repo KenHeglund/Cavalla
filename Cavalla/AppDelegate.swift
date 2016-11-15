@@ -10,13 +10,14 @@ import Cocoa
 
 @NSApplicationMain
 
+/*==========================================================================*/
 class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     
-    static let OpenManagerButtonTitle = "Open HIDManager"
-    static let CloseManagerButtonTitle = "Close HIDManager"
+    static let openManagerButtonTitle = "Open HIDManager"
+    static let closeManagerButtonTitle = "Close HIDManager"
     
     dynamic var hidManager: CAVHIDManager? = nil
-    dynamic var openCloseManagerButtonTitle = AppDelegate.OpenManagerButtonTitle
+    dynamic var openCloseManagerButtonTitle = AppDelegate.openManagerButtonTitle
     dynamic var addressString = ""
     
     fileprivate var inhibitTableSelectionChange = false
@@ -46,7 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     
     /*==========================================================================*/
     override init() {
-        ValueTransformer.setValueTransformer( IsNotZeroTransformer(), forName: .isNotZeroTransformer )
+        ValueTransformer.setValueTransformer( IsNotZeroTransformer(), forName: IsNotZeroTransformer.name )
     }
     
     // MARK: - NSNibAwaking implementation
@@ -54,13 +55,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     /*==========================================================================*/
     override func awakeFromNib() {
         
-        let deviceSortDescriptor = NSSortDescriptor( key: CAVHIDDeviceLongProductNameKey, ascending: true, comparator: {
+        let deviceSortDescriptor = NSSortDescriptor( key: CAVHIDDevice.longProductNameKey, ascending: true, comparator: {
             ($0 as AnyObject).localizedCaseInsensitiveCompare( $1 as! String )
         })
         
         self.deviceArrayController?.sortDescriptors = [ deviceSortDescriptor ]
         
-        NotificationCenter.default.addObserver( self, selector: #selector(AppDelegate.eventNotification(_:)), name: Notification.Name.cavHIDDeviceDidReceiveValueNotification, object: nil )
+        NotificationCenter.default.addObserver( self, selector: #selector(AppDelegate.eventNotification(_:)), name: CAVHIDDevice.didReceiveValueNotification, object: nil )
         
         let font = NSFont( name: "Courier New", size: 13.0 ) ?? NSFont.userFixedPitchFont( ofSize: 13.0 )!
         
@@ -77,7 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
             hidManager.close()
             self.hidManager = nil
             
-            self.openCloseManagerButtonTitle = AppDelegate.OpenManagerButtonTitle
+            self.openCloseManagerButtonTitle = AppDelegate.openManagerButtonTitle
             self.addressString = ""
         }
         else {
@@ -89,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
                 self.addressString = String( format: "Error: 0x%08X (%d)", status, status )
             }
             
-            self.openCloseManagerButtonTitle = AppDelegate.CloseManagerButtonTitle
+            self.openCloseManagerButtonTitle = AppDelegate.closeManagerButtonTitle
             self.hidManager = hidManager
         }
     }
@@ -144,7 +145,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     /*==========================================================================*/
     func eventNotification( _ notification: Notification ) {
         
-        guard let stringValue = notification.userInfo?[CAVHIDDeviceValueAsStringKey] as? String else { return }
+        guard let stringValue = notification.userInfo?[CAVHIDDevice.valueAsStringKey] as? String else { return }
         guard let textStorage = self.eventView?.textStorage else { return }
 
         let attributedString = NSAttributedString( string: stringValue + "\n", attributes: self.eventViewAttributes )

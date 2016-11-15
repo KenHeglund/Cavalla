@@ -38,15 +38,6 @@ extension IOHIDValue {
 
 /*==========================================================================*/
 
-extension Notification.Name {
-    public static let cavHIDDeviceDidReceiveValueNotification = Notification.Name( rawValue: "CAVHIDDeviceDidReceiveValueNotification" )
-}
-
-let CAVHIDDeviceValueAsStringKey = "ValueAsStringKey"
-let CAVHIDDeviceLongProductNameKey = "longProductName"
-
-/*==========================================================================*/
-
 class CAVHIDDevice: NSObject {
 
     let hidDeviceRef: IOHIDDevice
@@ -59,6 +50,10 @@ class CAVHIDDevice: NSObject {
     
     dynamic var elements: [CAVHIDElement] = []
     dynamic var elementCount: Int { return self.elements.count }
+    
+    public static let didReceiveValueNotification: Notification.Name = Notification.Name( rawValue: "CAVHIDDeviceDidReceiveValueNotification" )
+    public static let valueAsStringKey = "ValueAsStringKey"
+    public static let longProductNameKey = "longProductName"
     
     // MARK: - Init / Deinit
     
@@ -190,9 +185,9 @@ private func CAVHIDDeviceValueAvailableHandler( context: UnsafeMutableRawPointer
         
         guard let hidValueRef = CAVHIDQueueCopyNextValueWithTimeout( queue, 0.0 ) else { return }
         
-        let userInfo = [ CAVHIDDeviceValueAsStringKey : hidValueRef.valueAsString() ]
+        let userInfo = [ CAVHIDDevice.valueAsStringKey : hidValueRef.valueAsString() ]
         
-        notificationCenter.post( name: Notification.Name.cavHIDDeviceDidReceiveValueNotification, object: device, userInfo: userInfo )
+        notificationCenter.post( name: CAVHIDDevice.didReceiveValueNotification, object: device, userInfo: userInfo )
         
     } while ( true )
 }
