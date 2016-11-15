@@ -60,7 +60,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
         
         self.deviceArrayController?.sortDescriptors = [ deviceSortDescriptor ]
         
-        NotificationCenter.default.addObserver( self, selector: #selector(AppDelegate.eventNotification(_:)), name: NSNotification.Name(rawValue: CAVHIDDeviceDidReceiveValueNotification), object: nil )
+        NotificationCenter.default.addObserver( self, selector: #selector(AppDelegate.eventNotification(_:)), name: Notification.Name.cavHIDDeviceDidReceiveValueNotification, object: nil )
         
         let font = NSFont( name: "Courier New", size: 13.0 ) ?? NSFont.userFixedPitchFont( ofSize: 13.0 )!
         
