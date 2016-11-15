@@ -38,7 +38,10 @@ extension IOHIDValue {
 
 /*==========================================================================*/
 
-let CAVHIDDeviceDidReceiveValueNotification = "CAVHIDDeviceDidReceiveValueNotification"
+extension Notification.Name {
+    public static let cavHIDDeviceDidReceiveValueNotification = Notification.Name( rawValue: "CAVHIDDeviceDidReceiveValueNotification" )
+}
+
 let CAVHIDDeviceValueAsStringKey = "ValueAsStringKey"
 let CAVHIDDeviceLongProductNameKey = "longProductName"
 
@@ -189,7 +192,7 @@ private func CAVHIDDeviceValueAvailableHandler( context: UnsafeMutableRawPointer
         
         let userInfo = [ CAVHIDDeviceValueAsStringKey : hidValueRef.valueAsString() ]
         
-        notificationCenter.post( name: Notification.Name(rawValue: CAVHIDDeviceDidReceiveValueNotification), object: device, userInfo: userInfo )
+        notificationCenter.post( name: Notification.Name.cavHIDDeviceDidReceiveValueNotification, object: device, userInfo: userInfo )
         
     } while ( true )
 }
