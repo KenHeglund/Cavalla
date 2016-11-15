@@ -69,13 +69,19 @@ private func CAVHIDManagerDeviceAttachedHandler( context: UnsafeMutableRawPointe
         print( "Device attached: \(product) (\(manufacturer)) \(vendorID):\(productID) \(usagePage):\(usage) [\(result)]" )
     }
     
-    IOHIDDeviceRegisterRemovalCallback( hidDeviceRef, CAVHIDManagerDeviceRemovedHandler, context )
-    
-    guard let device = CAVHIDDevice( withHIDDeviceRef: hidDeviceRef ) else { return }
-    
-    guard let context = context else { return }
-    let manager = Unmanaged<CAVHIDManager>.fromOpaque( context ).takeUnretainedValue()
-    manager.mutableSetValue( forKey: CAVHIDManagerDevicesKey ).add( device )
+    DispatchQueue.global( priority: DispatchQueue.GlobalQueuePriority.default ).async {
+        
+        IOHIDDeviceRegisterRemovalCallback( hidDeviceRef, CAVHIDManagerDeviceRemovedHandler, context )
+        
+        guard let device = CAVHIDDevice( withHIDDeviceRef: hidDeviceRef ) else { return }
+        
+        guard let context = context else { return }
+        let manager = Unmanaged<CAVHIDManager>.fromOpaque( context ).takeUnretainedValue()
+        
+        DispatchQueue.main.async {
+            manager.mutableSetValue( forKey: CAVHIDManagerDevicesKey ).add( device )
+        }
+    }
 }
 
 /*==========================================================================*/
