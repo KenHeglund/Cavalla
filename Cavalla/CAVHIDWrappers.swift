@@ -14,7 +14,7 @@
 import Foundation
 
 /*==========================================================================*/
-func CAVHIDDeviceGetProperty( _ device: IOHIDDevice, _ key: CFString ) -> AnyObject? {
+func CAVHIDDeviceGetProperty( _ device: IOHIDDevice, _ key: CFString ) -> CFTypeRef? {
     return IOHIDDeviceGetProperty( device, key )
 }
 
