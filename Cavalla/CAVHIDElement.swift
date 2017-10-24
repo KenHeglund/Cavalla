@@ -11,13 +11,13 @@ import HIDSpecification
 
 class CAVHIDElement: NSObject {
     
-    fileprivate unowned let device: CAVHIDDevice
+    private unowned let device: CAVHIDDevice
     
     let hidElementRef: IOHIDElement
-    dynamic var cookie: IOHIDElementCookie
-    let canEnable: Bool
+    @objc dynamic var cookie: IOHIDElementCookie
+    @objc dynamic let canEnable: Bool
     
-    var enabled: Bool {
+    @objc dynamic var enabled: Bool {
         
         get {
             return self.device.queueContainsHIDElementRef( self.hidElementRef )
@@ -40,9 +40,9 @@ class CAVHIDElement: NSObject {
         }
     }
     
-    dynamic var nameString: String
-    dynamic var usageString: String
-    dynamic var sizeString: String
+    @objc dynamic var nameString: String
+    @objc dynamic var usageString: String
+    @objc dynamic var sizeString: String
     
     /*==========================================================================*/
     init( withHIDElementRef hidElementRef: IOHIDElement, device: CAVHIDDevice ) {

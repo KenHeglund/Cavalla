@@ -16,19 +16,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     static let openManagerButtonTitle = "Open HIDManager"
     static let closeManagerButtonTitle = "Close HIDManager"
     
-    dynamic var hidManager: CAVHIDManager? = nil
-    dynamic var openCloseManagerButtonTitle = AppDelegate.openManagerButtonTitle
-    dynamic var addressString = ""
+    @objc dynamic var hidManager: CAVHIDManager? = nil
+    @objc dynamic var openCloseManagerButtonTitle = AppDelegate.openManagerButtonTitle
+    @objc dynamic var addressString = ""
     
-    fileprivate var inhibitTableSelectionChange = false
-    fileprivate var eventViewAttributes: [String:AnyObject] = [:]
+    private var inhibitTableSelectionChange = false
+    private var eventViewAttributes: [NSAttributedStringKey : Any] = [:]
     
     @IBOutlet var window: NSWindow? = nil
     @IBOutlet var eventView: NSTextView? = nil
     @IBOutlet var deviceArrayController: NSArrayController? = nil
     @IBOutlet var elementArrayController: NSArrayController? = nil
     
-    dynamic var deviceSelectionIndexes: IndexSet = IndexSet() {
+    @objc dynamic var deviceSelectionIndexes: IndexSet = IndexSet() {
         
         didSet {
             
@@ -65,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
         
         let font = NSFont( name: "Courier New", size: 13.0 ) ?? NSFont.userFixedPitchFont( ofSize: 13.0 )!
         
-        self.eventViewAttributes = [ NSFontAttributeName : font ]
+        self.eventViewAttributes = [ .font : font ]
     }
     
     // MARK: - IBAction implementations
@@ -105,11 +105,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
         let key = tableView.tableColumns[clickedColumn].identifier
         
         let clickedRow = tableView.clickedRow
-        let newValue = (arrangedObjects[clickedRow] as AnyObject).value( forKey: key )
+        let newValue = (arrangedObjects[clickedRow] as AnyObject).value( forKey: key.rawValue )
         
         let selectedObjects = arrangedObjects.objects( at: tableView.selectedRowIndexes )
         for object in selectedObjects {
-            (object as AnyObject).setValue( newValue, forKey: key )
+            (object as AnyObject).setValue( newValue, forKey: key.rawValue )
         }
         
         self.inhibitTableSelectionChange = true
@@ -143,7 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     // MARK: - AppDelegate implementation
     
     /*==========================================================================*/
-    func eventNotification( _ notification: Notification ) {
+    @objc func eventNotification( _ notification: Notification ) {
         
         guard let stringValue = notification.userInfo?[CAVHIDDevice.valueAsStringKey] as? String else { return }
         guard let textStorage = self.eventView?.textStorage else { return }

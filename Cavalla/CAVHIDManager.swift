@@ -10,9 +10,9 @@ import Foundation
 
 class CAVHIDManager: NSObject {
     
-    fileprivate(set) var hidManagerRef: IOHIDManager? = nil
+    private(set) var hidManagerRef: IOHIDManager? = nil
     
-    dynamic var devices: NSMutableSet = NSMutableSet()
+    @objc dynamic var devices: NSMutableSet = NSMutableSet()
     
     public static let devicesKey = "devices"
     

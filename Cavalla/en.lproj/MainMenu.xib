@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -654,7 +655,7 @@
         <window title="Cavalla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="335" y="390" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1577"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -721,10 +722,7 @@
                                         </connections>
                                     </popUpButton>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="579">
-                                        <rect key="frame" x="30" y="458" width="59" height="14"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="720"/>
-                                        </constraints>
+                                        <rect key="frame" x="30" y="458" width="60" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Vendor ID" id="580">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -732,7 +730,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="586">
-                                        <rect key="frame" x="30" y="436" width="59" height="14"/>
+                                        <rect key="frame" x="30" y="436" width="60" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Product ID" id="587">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -740,7 +738,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="590">
-                                        <rect key="frame" x="30" y="414" width="59" height="14"/>
+                                        <rect key="frame" x="30" y="414" width="60" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Version" id="591">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -748,7 +746,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="598">
-                                        <rect key="frame" x="95" y="458" width="107" height="14"/>
+                                        <rect key="frame" x="96" y="458" width="107" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="&lt;0x8888 (88888)&gt;" id="599">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -759,7 +757,7 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="603">
-                                        <rect key="frame" x="95" y="436" width="107" height="14"/>
+                                        <rect key="frame" x="96" y="436" width="107" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="&lt;0x8888 (88888)&gt;" id="604">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -770,7 +768,7 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="607">
-                                        <rect key="frame" x="95" y="414" width="107" height="14"/>
+                                        <rect key="frame" x="96" y="414" width="107" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="&lt;0x8888 (88888)&gt;" id="608">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -900,7 +898,6 @@
                                                     </connections>
                                                 </tableView>
                                             </subviews>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="633">
                                             <rect key="frame" x="1" y="279" width="218" height="16"/>
@@ -927,7 +924,7 @@
                                         </connections>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="969">
-                                        <rect key="frame" x="30" y="392" width="59" height="14"/>
+                                        <rect key="frame" x="30" y="392" width="60" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Elements" id="972">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -935,7 +932,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="970">
-                                        <rect key="frame" x="95" y="392" width="107" height="14"/>
+                                        <rect key="frame" x="96" y="392" width="107" height="14"/>
                                         <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" alignment="left" title="&lt;0x8888 (88888)&gt;" id="971">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1008,7 +1005,14 @@
                                     <constraint firstItem="969" firstAttribute="leading" secondItem="631" secondAttribute="leading" id="997"/>
                                     <constraint firstAttribute="bottom" secondItem="Tx8-nV-cPk" secondAttribute="bottom" constant="21" id="Ggo-mF-T5W"/>
                                     <constraint firstAttribute="trailing" secondItem="Tx8-nV-cPk" secondAttribute="trailing" constant="20" symbolic="YES" id="PHH-v8-kL2"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="598" secondAttribute="trailing" constant="20" symbolic="YES" id="YRb-hn-Fpn"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="556" secondAttribute="trailing" constant="20" symbolic="YES" id="fkB-gb-wgv"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="614" secondAttribute="trailing" constant="20" symbolic="YES" id="gab-uE-xnt"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="970" secondAttribute="trailing" constant="20" symbolic="YES" id="knu-yZ-XPl"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="603" secondAttribute="trailing" constant="20" symbolic="YES" id="nPY-nm-rrm"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="536" secondAttribute="trailing" constant="20" symbolic="YES" id="oVw-Am-NgA"/>
                                     <constraint firstItem="Tx8-nV-cPk" firstAttribute="leading" secondItem="631" secondAttribute="leading" id="p1P-75-cVS"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="607" secondAttribute="trailing" constant="20" symbolic="YES" id="uIh-X9-4mo"/>
                                     <constraint firstItem="Tx8-nV-cPk" firstAttribute="top" secondItem="631" secondAttribute="bottom" constant="14" id="v6d-wG-FCo"/>
                                 </constraints>
                             </customView>
@@ -1030,15 +1034,13 @@
                                             <rect key="frame" x="1" y="1" width="491" height="510"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textView editable="NO" importsGraphics="NO" findStyle="panel" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" id="765">
+                                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="765">
                                                     <rect key="frame" x="0.0" y="0.0" width="491" height="510"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <size key="minSize" width="491" height="510"/>
                                                     <size key="maxSize" width="543" height="10000000"/>
                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <size key="minSize" width="491" height="510"/>
-                                                    <size key="maxSize" width="543" height="10000000"/>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1075,6 +1077,8 @@
                                     <constraint firstItem="1010" firstAttribute="trailing" secondItem="764" secondAttribute="trailing" id="1015"/>
                                     <constraint firstAttribute="bottom" secondItem="1010" secondAttribute="bottom" constant="20" symbolic="YES" id="1016"/>
                                     <constraint firstItem="1010" firstAttribute="top" secondItem="764" secondAttribute="bottom" constant="8" symbolic="YES" id="1017"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="756" secondAttribute="trailing" constant="20" symbolic="YES" id="cvz-rd-8Tb"/>
+                                    <constraint firstItem="1010" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="656" secondAttribute="leading" constant="20" symbolic="YES" id="hCt-76-SyV"/>
                                 </constraints>
                             </customView>
                         </subviews>
