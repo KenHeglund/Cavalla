@@ -10,9 +10,9 @@ import Foundation
 
 class CAVHIDManager: NSObject {
     
-    fileprivate(set) var hidManagerRef: IOHIDManager? = nil
+    private(set) var hidManagerRef: IOHIDManager? = nil
     
-    dynamic var devices: NSMutableSet = NSMutableSet()
+    @objc dynamic var devices: NSMutableSet = NSMutableSet()
     
     public static let devicesKey = "devices"
     
@@ -58,12 +58,12 @@ let LOG_ATTACH_AND_DETACH = true
 private func CAVHIDManagerDeviceAttachedHandler( context: UnsafeMutableRawPointer?, result: IOReturn, sender: UnsafeMutableRawPointer?, hidDeviceRef: IOHIDDevice ) {
     
     if LOG_ATTACH_AND_DETACH == true {
-        let manufacturer = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDManufacturerKey as CFString ) as? String ?? ""
-        let product = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductKey as CFString ) as? String ?? ""
-        let vendorID = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDVendorIDKey as CFString ) as? Int ?? 0
-        let productID = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductIDKey as CFString ) as? Int ?? 0
-        let usagePage = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsagePageKey as CFString ) as? Int ?? 0
-        let usage = CAVHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsageKey as CFString ) as? Int ?? 0
+        let manufacturer = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDManufacturerKey as CFString ) as? String ?? ""
+        let product = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductKey as CFString ) as? String ?? ""
+        let vendorID = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDVendorIDKey as CFString ) as? Int ?? 0
+        let productID = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDProductIDKey as CFString ) as? Int ?? 0
+        let usagePage = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsagePageKey as CFString ) as? Int ?? 0
+        let usage = IOHIDDeviceGetProperty( hidDeviceRef, kIOHIDPrimaryUsageKey as CFString ) as? Int ?? 0
         print( "Device attached: \(product) (\(manufacturer)) \(vendorID):\(productID) \(usagePage):\(usage) [\(result)]" )
     }
     
@@ -90,8 +90,8 @@ private func CAVHIDManagerDeviceRemovedHandler( context: UnsafeMutableRawPointer
     let hidDevice = Unmanaged<IOHIDDevice>.fromOpaque( hidDevicePointer ).takeUnretainedValue()
     
     if LOG_ATTACH_AND_DETACH == true {
-        let manufacturer = CAVHIDDeviceGetProperty( hidDevice, kIOHIDManufacturerKey as CFString ) as? String ?? ""
-        let product = CAVHIDDeviceGetProperty( hidDevice, kIOHIDProductKey as CFString ) as? String ?? ""
+        let manufacturer = IOHIDDeviceGetProperty( hidDevice, kIOHIDManufacturerKey as CFString ) as? String ?? ""
+        let product = IOHIDDeviceGetProperty( hidDevice, kIOHIDProductKey as CFString ) as? String ?? ""
         print( "Device removed: \(product) (\(manufacturer)) [\(result)]" )
     }
     

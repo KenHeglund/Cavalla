@@ -18,7 +18,6 @@
 		BE63AC931CF6AB2C00C3DD49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE63AC8E1CF6AB2C00C3DD49 /* InfoPlist.strings */; };
 		BE63AC941CF6AB2C00C3DD49 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */; };
 		BE7269D61D08AB860089BB1A /* IsNotZeroTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7269D51D08AB860089BB1A /* IsNotZeroTransformer.swift */; };
-		BE9D63B71DD68D8400DFF7CC /* CAVHIDWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9D63B61DD68D8400DFF7CC /* CAVHIDWrappers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,7 +50,6 @@
 		BE63AC961CF6B85C00C3DD49 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BE63AC971CF6C51D00C3DD49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BE7269D51D08AB860089BB1A /* IsNotZeroTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsNotZeroTransformer.swift; sourceTree = "<group>"; };
-		BE9D63B61DD68D8400DFF7CC /* CAVHIDWrappers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAVHIDWrappers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 				BE63AC831CF6AAD000C3DD49 /* CAVHIDDevice.swift */,
 				BE63AC841CF6AAD000C3DD49 /* CAVHIDElement.swift */,
 				BE63AC851CF6AAD000C3DD49 /* CAVHIDManager.swift */,
-				BE9D63B61DD68D8400DFF7CC /* CAVHIDWrappers.swift */,
 				BE7269D51D08AB860089BB1A /* IsNotZeroTransformer.swift */,
 				BE62966B15D583AE00E38649 /* Resources */,
 			);
@@ -120,7 +117,6 @@
 				BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */,
 			);
 			name = Resources;
-			path = Source/Resources;
 			sourceTree = "<group>";
 		};
 		BE63AC951CF6B83200C3DD49 /* Documentation */ = {
@@ -161,12 +157,12 @@
 			attributes = {
 				CLASSPREFIX = CAV;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = OrderedBytes;
 				TargetAttributes = {
 					BE62963915D5824000E38649 = {
 						DevelopmentTeam = 72C3P5QCVR;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -204,7 +200,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE9D63B71DD68D8400DFF7CC /* CAVHIDWrappers.swift in Sources */,
 				BE63AC891CF6AAD000C3DD49 /* CAVHIDManager.swift in Sources */,
 				BE63AC871CF6AAD000C3DD49 /* CAVHIDDevice.swift in Sources */,
 				BE7269D61D08AB860089BB1A /* IsNotZeroTransformer.swift in Sources */,
@@ -241,12 +236,18 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -274,12 +275,18 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -313,7 +320,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.orderedbytes.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -331,7 +339,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.orderedbytes.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

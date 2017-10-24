@@ -13,7 +13,7 @@ extension IOHIDValue {
     
     func valueAsString() -> String {
         
-        guard let hidElementRef = CAVHIDValueGetElement( self ) else { return "<value has no associated element>" }
+        let hidElementRef = IOHIDValueGetElement(self)
         let elementCookie = IOHIDElementGetCookie( hidElementRef )
         let longValueSize = IOHIDValueGetLength( self )
         
@@ -43,13 +43,13 @@ class CAVHIDDevice: NSObject {
     let hidDeviceRef: IOHIDDevice
     fileprivate var hidQueueRef: IOHIDQueue?
     
-    dynamic var longProductName = ""
-    dynamic var vendorIDString = "n/a"
-    dynamic var productIDString = "n/a"
-    dynamic var versionString = "n/a"
+    @objc dynamic var longProductName = ""
+    @objc dynamic var vendorIDString = "n/a"
+    @objc dynamic var productIDString = "n/a"
+    @objc dynamic var versionString = "n/a"
     
-    dynamic var elements: [CAVHIDElement] = []
-    dynamic var elementCount: Int { return self.elements.count }
+    @objc dynamic var elements: [CAVHIDElement] = []
+    @objc dynamic var elementCount: Int { return self.elements.count }
     
     public static let didReceiveValueNotification: Notification.Name = Notification.Name( rawValue: "CAVHIDDeviceDidReceiveValueNotification" )
     public static let valueAsStringKey = "ValueAsStringKey"
@@ -94,7 +94,7 @@ class CAVHIDDevice: NSObject {
         let usage = self.intPropertyFromDevice( kIOHIDPrimaryUsageKey ) ?? 0
         self.longProductName = String( format: "%@ (%@) [%ld:%ld]", productString, manufacturerString, usagePage, usage )
         
-        guard let array = IOHIDDeviceCopyMatchingElements( hidDeviceRef, nil, options ) as? NSArray else { return }
+        guard let array = IOHIDDeviceCopyMatchingElements( hidDeviceRef, nil, options ) else { return }
         guard let elementRefArray = array as? [IOHIDElement] else { return }
         
         var elements: [CAVHIDElement] = []
@@ -159,13 +159,13 @@ class CAVHIDDevice: NSObject {
     // MARK: - CAVHIDDevice internal
     
     /*==========================================================================*/
-    fileprivate func stringPropertyFromDevice( _ key: String ) -> String? {
-        return ( CAVHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? String )
+    private func stringPropertyFromDevice( _ key: String ) -> String? {
+        return ( IOHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? String )
     }
     
     /*==========================================================================*/
-    fileprivate func intPropertyFromDevice( _ key: String ) -> Int? {
-        return ( CAVHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? Int )
+    private func intPropertyFromDevice( _ key: String ) -> Int? {
+        return ( IOHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? Int )
     }
     
 }
@@ -183,7 +183,7 @@ private func CAVHIDDeviceValueAvailableHandler( context: UnsafeMutableRawPointer
     
     repeat {
         
-        guard let hidValueRef = CAVHIDQueueCopyNextValueWithTimeout( queue, 0.0 ) else { return }
+        guard let hidValueRef = IOHIDQueueCopyNextValueWithTimeout( queue, 0.0 ) else { return }
         
         let userInfo = [ CAVHIDDevice.valueAsStringKey : hidValueRef.valueAsString() ]
         
