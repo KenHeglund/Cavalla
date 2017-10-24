@@ -950,7 +950,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
                                         <connections>
-                                            <binding destination="938" name="enabled" keyPath="arrangedObjects.@count" id="2Rv-vB-0n8">
+                                            <binding destination="891" name="enabled" keyPath="selection.elementCount" id="7JE-Gf-xCe">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">IsNotZeroTransformer</string>
                                                 </dictionary>
