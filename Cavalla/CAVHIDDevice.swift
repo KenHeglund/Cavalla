@@ -13,7 +13,7 @@ extension IOHIDValue {
     
     func valueAsString() -> String {
         
-        guard let hidElementRef = CAVHIDValueGetElement( self ) else { return "<value has no associated element>" }
+        let hidElementRef = IOHIDValueGetElement(self)
         let elementCookie = IOHIDElementGetCookie( hidElementRef )
         let longValueSize = IOHIDValueGetLength( self )
         
@@ -160,12 +160,12 @@ class CAVHIDDevice: NSObject {
     
     /*==========================================================================*/
     private func stringPropertyFromDevice( _ key: String ) -> String? {
-        return ( CAVHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? String )
+        return ( IOHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? String )
     }
     
     /*==========================================================================*/
     private func intPropertyFromDevice( _ key: String ) -> Int? {
-        return ( CAVHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? Int )
+        return ( IOHIDDeviceGetProperty( self.hidDeviceRef, key as CFString ) as? Int )
     }
     
 }
@@ -183,7 +183,7 @@ private func CAVHIDDeviceValueAvailableHandler( context: UnsafeMutableRawPointer
     
     repeat {
         
-        guard let hidValueRef = CAVHIDQueueCopyNextValueWithTimeout( queue, 0.0 ) else { return }
+        guard let hidValueRef = IOHIDQueueCopyNextValueWithTimeout( queue, 0.0 ) else { return }
         
         let userInfo = [ CAVHIDDevice.valueAsStringKey : hidValueRef.valueAsString() ]
         
