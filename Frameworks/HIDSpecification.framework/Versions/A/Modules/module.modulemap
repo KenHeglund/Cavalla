@@ -1,4 +1,4 @@
 framework module HIDSpecification {
-    header "HIDSpecification-Swift.h"
-    requires objc
+  header "HIDSpecification-Swift.h"
+  requires objc
 }

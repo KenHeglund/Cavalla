@@ -116,6 +116,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     }
     
     /*==========================================================================*/
+    @IBAction func doEnableAllElements( _ sender: AnyObject? ) {
+        
+        guard let elementArray = self.elementArrayController?.arrangedObjects as? [CAVHIDElement] else {
+            return
+        }
+        
+        elementArray.forEach({ $0.enabled = true })
+    }
+    
+    /*==========================================================================*/
+    @IBAction func doDisableAllElements( _ sender: AnyObject? ) {
+        
+        guard let elementArray = self.elementArrayController?.arrangedObjects as? [CAVHIDElement] else {
+            return
+        }
+        
+        elementArray.forEach({ $0.enabled = false })
+    }
+    
+    /*==========================================================================*/
     @IBAction func doClearEvents( _ sender: AnyObject? ) {
         self.eventView?.string = ""
     }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -655,7 +655,7 @@
         <window title="Cavalla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="335" y="390" width="800" height="600"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
             <view key="contentView" id="372">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -787,13 +787,13 @@
                                         </textFieldCell>
                                     </textField>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="631">
-                                        <rect key="frame" x="32" y="54" width="220" height="296"/>
+                                        <rect key="frame" x="32" y="74" width="220" height="276"/>
                                         <clipView key="contentView" id="taO-QG-CuJ">
-                                            <rect key="frame" x="1" y="0.0" width="218" height="295"/>
+                                            <rect key="frame" x="1" y="0.0" width="218" height="260"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" autosaveColumns="NO" typeSelect="NO" rowHeight="14" headerView="634" id="632">
-                                                    <rect key="frame" x="0.0" y="0.0" width="445" height="272"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="445" height="237"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -899,8 +899,11 @@
                                                 </tableView>
                                             </subviews>
                                         </clipView>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="2Cw-eo-Idp"/>
+                                        </constraints>
                                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="633">
-                                            <rect key="frame" x="1" y="279" width="218" height="16"/>
+                                            <rect key="frame" x="1" y="260" width="218" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="635">
@@ -950,19 +953,49 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
                                         <connections>
-                                            <binding destination="891" name="enabled" keyPath="selection.elementCount" id="7JE-Gf-xCe">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">IsNotZeroTransformer</string>
-                                                </dictionary>
-                                            </binding>
                                             <binding destination="938" name="predicate" keyPath="filterPredicate" id="ibd-nR-SXJ">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayName">Filter by Name</string>
                                                     <string key="NSPredicateFormat">nameString contains[c] $value</string>
                                                 </dictionary>
                                             </binding>
+                                            <binding destination="891" name="enabled" keyPath="selection.elementCount" id="7JE-Gf-xCe">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">IsNotZeroTransformer</string>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </searchField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HuU-56-gmT">
+                                        <rect key="frame" x="27" y="42" width="78" height="28"/>
+                                        <buttonCell key="cell" type="push" title="Enable All" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7pk-st-s6F">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="doEnableAllElements:" target="494" id="MzZ-k5-aXz"/>
+                                            <binding destination="891" name="enabled" keyPath="selection.elementCount" id="Exz-7o-tcF">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">IsNotZeroTransformer</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Svd-jn-Q77">
+                                        <rect key="frame" x="103" y="42" width="82" height="28"/>
+                                        <buttonCell key="cell" type="push" title="Disable All" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ika-vq-wSU">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="doDisableAllElements:" target="494" id="TfL-ux-7wy"/>
+                                            <binding destination="891" name="enabled" keyPath="selection.elementCount" id="m4n-QW-PRz">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">IsNotZeroTransformer</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="579" firstAttribute="baseline" secondItem="598" secondAttribute="baseline" id="669"/>
@@ -1003,17 +1036,22 @@
                                     <constraint firstItem="631" firstAttribute="top" secondItem="614" secondAttribute="bottom" constant="8" symbolic="YES" id="992"/>
                                     <constraint firstItem="969" firstAttribute="leading" secondItem="590" secondAttribute="leading" id="995"/>
                                     <constraint firstItem="969" firstAttribute="leading" secondItem="631" secondAttribute="leading" id="997"/>
+                                    <constraint firstItem="HuU-56-gmT" firstAttribute="centerY" secondItem="Svd-jn-Q77" secondAttribute="centerY" id="2Sh-va-yxc"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Svd-jn-Q77" secondAttribute="trailing" constant="20" symbolic="YES" id="AVM-CU-aGC"/>
+                                    <constraint firstItem="Svd-jn-Q77" firstAttribute="leading" secondItem="HuU-56-gmT" secondAttribute="trailing" constant="8" id="FrF-Mg-LnD"/>
                                     <constraint firstAttribute="bottom" secondItem="Tx8-nV-cPk" secondAttribute="bottom" constant="21" id="Ggo-mF-T5W"/>
                                     <constraint firstAttribute="trailing" secondItem="Tx8-nV-cPk" secondAttribute="trailing" constant="20" symbolic="YES" id="PHH-v8-kL2"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="598" secondAttribute="trailing" constant="20" symbolic="YES" id="YRb-hn-Fpn"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="556" secondAttribute="trailing" constant="20" symbolic="YES" id="fkB-gb-wgv"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="614" secondAttribute="trailing" constant="20" symbolic="YES" id="gab-uE-xnt"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="970" secondAttribute="trailing" constant="20" symbolic="YES" id="knu-yZ-XPl"/>
+                                    <constraint firstItem="Tx8-nV-cPk" firstAttribute="top" secondItem="HuU-56-gmT" secondAttribute="bottom" constant="8" id="ktW-tc-oI0"/>
+                                    <constraint firstItem="HuU-56-gmT" firstAttribute="leading" secondItem="631" secondAttribute="leading" id="mdK-s6-tH6"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="603" secondAttribute="trailing" constant="20" symbolic="YES" id="nPY-nm-rrm"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="536" secondAttribute="trailing" constant="20" symbolic="YES" id="oVw-Am-NgA"/>
                                     <constraint firstItem="Tx8-nV-cPk" firstAttribute="leading" secondItem="631" secondAttribute="leading" id="p1P-75-cVS"/>
+                                    <constraint firstItem="HuU-56-gmT" firstAttribute="top" secondItem="631" secondAttribute="bottom" constant="8" id="r7i-Xy-Kjt"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="607" secondAttribute="trailing" constant="20" symbolic="YES" id="uIh-X9-4mo"/>
-                                    <constraint firstItem="Tx8-nV-cPk" firstAttribute="top" secondItem="631" secondAttribute="bottom" constant="14" id="v6d-wG-FCo"/>
                                 </constraints>
                             </customView>
                             <customView id="656">
@@ -1031,14 +1069,14 @@
                                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="764">
                                         <rect key="frame" x="20" y="46" width="493" height="512"/>
                                         <clipView key="contentView" id="AoG-kU-U1n">
-                                            <rect key="frame" x="1" y="1" width="491" height="510"/>
+                                            <rect key="frame" x="1" y="1" width="476" height="510"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="765">
-                                                    <rect key="frame" x="0.0" y="0.0" width="491" height="510"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="476" height="510"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <size key="minSize" width="491" height="510"/>
+                                                    <size key="minSize" width="476" height="510"/>
                                                     <size key="maxSize" width="543" height="10000000"/>
                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 </textView>
@@ -1046,14 +1084,14 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </clipView>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="787"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="787"/>
                                         </constraints>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="766">
                                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="767">
-                                            <rect key="frame" x="476" y="1" width="16" height="510"/>
+                                            <rect key="frame" x="477" y="1" width="15" height="510"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
