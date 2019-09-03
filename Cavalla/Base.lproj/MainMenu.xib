@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -676,7 +676,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="542">
-                                        <rect key="frame" x="27" y="534" width="136" height="28"/>
+                                        <rect key="frame" x="27" y="534" width="136" height="27"/>
                                         <buttonCell key="cell" type="push" title="Close IOHIDManager" bezelStyle="rounded" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="543">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>
@@ -805,7 +805,7 @@
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
-                                                            <buttonCell key="dataCell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="only" controlSize="mini" inset="2" id="649">
+                                                            <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" controlSize="mini" inset="2" id="649">
                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                 <font key="font" metaFont="miniSystem"/>
                                                                 <connections>
@@ -899,11 +899,11 @@
                                                 </tableView>
                                             </subviews>
                                         </clipView>
-                                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="633">
+                                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="633">
                                             <rect key="frame" x="1" y="279" width="218" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="635">
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="635">
                                             <rect key="frame" x="224" y="17" width="15" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
@@ -950,15 +950,15 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
                                         <connections>
-                                            <binding destination="891" name="enabled" keyPath="selection.elementCount" id="7JE-Gf-xCe">
-                                                <dictionary key="options">
-                                                    <string key="NSValueTransformerName">IsNotZeroTransformer</string>
-                                                </dictionary>
-                                            </binding>
                                             <binding destination="938" name="predicate" keyPath="filterPredicate" id="ibd-nR-SXJ">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayName">Filter by Name</string>
                                                     <string key="NSPredicateFormat">nameString contains[c] $value</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="891" name="enabled" keyPath="selection.elementCount" id="7JE-Gf-xCe">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">IsNotZeroTransformer</string>
                                                 </dictionary>
                                             </binding>
                                         </connections>
@@ -1030,35 +1030,35 @@
                                     </textField>
                                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="764">
                                         <rect key="frame" x="20" y="46" width="493" height="512"/>
-                                        <clipView key="contentView" id="AoG-kU-U1n">
+                                        <clipView key="contentView" drawsBackground="NO" id="AoG-kU-U1n">
                                             <rect key="frame" x="1" y="1" width="491" height="510"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" allowsNonContiguousLayout="YES" id="765">
                                                     <rect key="frame" x="0.0" y="0.0" width="491" height="510"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <size key="minSize" width="491" height="510"/>
                                                     <size key="maxSize" width="543" height="10000000"/>
                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 </textView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </clipView>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="787"/>
                                         </constraints>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="766">
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="766">
                                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="767">
+                                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="767">
                                             <rect key="frame" x="476" y="1" width="16" height="510"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1010">
-                                        <rect key="frame" x="426" y="14" width="92" height="28"/>
+                                        <rect key="frame" x="426" y="14" width="92" height="27"/>
                                         <buttonCell key="cell" type="push" title="Clear Events" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1011">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="smallSystem"/>

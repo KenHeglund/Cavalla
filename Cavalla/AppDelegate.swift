@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     @objc dynamic var addressString = ""
     
     private var inhibitTableSelectionChange = false
-    private var eventViewAttributes: [NSAttributedStringKey : Any] = [:]
+    private var eventViewAttributes: [NSAttributedString.Key : Any] = [:]
     
     @IBOutlet var window: NSWindow? = nil
     @IBOutlet var eventView: NSTextView? = nil
@@ -113,6 +113,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
         }
         
         self.inhibitTableSelectionChange = true
+    }
+    
+    /*==========================================================================*/
+    @IBAction func doEnableAllElements( _ sender: AnyObject? ) {
+        
+        guard let elementArray = self.elementArrayController?.arrangedObjects as? [CAVHIDElement] else {
+            return
+        }
+        
+        elementArray.forEach({ $0.enabled = true })
+    }
+    
+    /*==========================================================================*/
+    @IBAction func doDisableAllElements( _ sender: AnyObject? ) {
+        
+        guard let elementArray = self.elementArrayController?.arrangedObjects as? [CAVHIDElement] else {
+            return
+        }
+        
+        elementArray.forEach({ $0.enabled = false })
     }
     
     /*==========================================================================*/

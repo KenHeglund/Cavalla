@@ -46,10 +46,10 @@
 		BE63AC851CF6AAD000C3DD49 /* CAVHIDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAVHIDManager.swift; path = Cavalla/CAVHIDManager.swift; sourceTree = SOURCE_ROOT; };
 		BE63AC8A1CF6AB2300C3DD49 /* Cavalla-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Cavalla-Info.plist"; path = "Cavalla/Cavalla-Info.plist"; sourceTree = SOURCE_ROOT; };
 		BE63AC8F1CF6AB2C00C3DD49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Cavalla/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
-		BE63AC911CF6AB2C00C3DD49 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = Cavalla/en.lproj/MainMenu.xib; sourceTree = SOURCE_ROOT; };
 		BE63AC961CF6B85C00C3DD49 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BE63AC971CF6C51D00C3DD49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BE7269D51D08AB860089BB1A /* IsNotZeroTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsNotZeroTransformer.swift; sourceTree = "<group>"; };
+		BEECF8A6231E37D500BD5D7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,21 +157,22 @@
 			attributes = {
 				CLASSPREFIX = CAV;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = OrderedBytes;
 				TargetAttributes = {
 					BE62963915D5824000E38649 = {
 						DevelopmentTeam = 72C3P5QCVR;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
 			buildConfigurationList = BE62963415D5824000E38649 /* Build configuration list for PBXProject "Cavalla" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = BE62962F15D5824000E38649;
 			productRefGroup = BE62963B15D5824000E38649 /* Products */;
@@ -222,7 +223,7 @@
 		BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BE63AC911CF6AB2C00C3DD49 /* en */,
+				BEECF8A6231E37D500BD5D7F /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -240,11 +241,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -266,6 +269,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -279,11 +285,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
@@ -302,7 +310,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -319,9 +329,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.orderedbytes.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -339,8 +346,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.orderedbytes.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
