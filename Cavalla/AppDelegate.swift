@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
     @objc dynamic var addressString = ""
     
     private var inhibitTableSelectionChange = false
-    private var eventViewAttributes: [NSAttributedStringKey : Any] = [:]
+    private var eventViewAttributes: [NSAttributedString.Key : Any] = [:]
     
     @IBOutlet var window: NSWindow? = nil
     @IBOutlet var eventView: NSTextView? = nil
