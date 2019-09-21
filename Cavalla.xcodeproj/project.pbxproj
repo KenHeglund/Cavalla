@@ -34,6 +34,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		52F865422336297A0051A87F /* Cavalla-Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cavalla-Debug.entitlements"; sourceTree = "<group>"; };
+		52F86543233629C40051A87F /* Cavalla-Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cavalla-Release.entitlements"; sourceTree = "<group>"; };
 		BE0D503315D5AB6A006C7F16 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		BE62963A15D5824000E38649 /* Cavalla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cavalla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE62963E15D5824000E38649 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -113,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				BE63AC8A1CF6AB2300C3DD49 /* Cavalla-Info.plist */,
+				52F865422336297A0051A87F /* Cavalla-Debug.entitlements */,
+				52F86543233629C40051A87F /* Cavalla-Release.entitlements */,
 				BE63AC8E1CF6AB2C00C3DD49 /* InfoPlist.strings */,
 				BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */,
 			);
@@ -157,7 +161,7 @@
 			attributes = {
 				CLASSPREFIX = CAV;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = OrderedBytes;
 				TargetAttributes = {
 					BE62963915D5824000E38649 = {
@@ -320,7 +324,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Cavalla/Cavalla-$(CONFIGURATION).entitlements";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 72C3P5QCVR;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -337,7 +345,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Cavalla/Cavalla-$(CONFIGURATION).entitlements";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 72C3P5QCVR;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
