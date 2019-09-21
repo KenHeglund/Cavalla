@@ -65,7 +65,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDelegate {
         
         let font = NSFont( name: "Courier New", size: 13.0 ) ?? NSFont.userFixedPitchFont( ofSize: 13.0 )!
         
-        self.eventViewAttributes = [ .font : font ]
+        let color: NSColor
+        if #available(macOS 10.10, *) {
+            color = NSColor.labelColor
+        }
+        else {
+            color = NSColor.black
+        }
+        
+        self.eventViewAttributes = [
+            .font : font,
+            .foregroundColor : color,
+        ]
     }
     
     // MARK: - IBAction implementations
