@@ -10,11 +10,11 @@
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
-		kfEsEskDHwfxVQbklNm3k2mRxNw=
+		W0p/YC+Y36i3B8sDijQ7Wo4Q3Dk=
 		</data>
 		<key>Resources/MustangDocument.momd/MustangDocument.mom</key>
 		<data>
-		4a2RbqesynHeOIqy/p9P7El22nM=
+		5mKlmAopX8+fqrpG3xD5RNc9wnc=
 		</data>
 		<key>Resources/MustangDocument.momd/VersionInfo.plist</key>
 		<data>
@@ -27,63 +27,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			a5bQ+1TCY5K23gk7pXfoqZcUHybunME3uX/qI59jYAc=
+			qgT+7XFyEDo+tRLlA9oWyS0HdTf9/+Zy6XuK/YVd8O0=
 			</data>
 		</dict>
 		<key>Modules/HIDSpecification.swiftmodule/Project/arm64-apple-macos.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YSDhWAFot2aJ7UNZoxxImtTrFXHcHTkOwSEAsLAHftg=
-			</data>
-		</dict>
-		<key>Modules/HIDSpecification.swiftmodule/Project/x86_64-apple-macos.swiftsourceinfo</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			pa2afsTSqX6LW0mW2cjPgOMhuKnfd7LlxwTxO+qkfbY=
+			VGjfz0iBVTR/mjJ29aUuXAW8O0em4+HL4d3FC8hPNes=
 			</data>
 		</dict>
 		<key>Modules/HIDSpecification.swiftmodule/arm64-apple-macos.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KnRdWE4y6t4QM5zi5JDptPdHFgJy1Tku+7GLkZS2aNM=
+			Qnesa0n4URGWAopawg9bGx36dUwkYV00BoCJ8LFzlyg=
 			</data>
 		</dict>
 		<key>Modules/HIDSpecification.swiftmodule/arm64-apple-macos.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Qve8x8XCkcT0/7uvDZqQbljH6n4WVnVT0mSCXvL6LFo=
+			ncDQ2fNf0pRnTYYEcoj+S9nUTwqhkb4OyyowkZ+XWWQ=
 			</data>
 		</dict>
 		<key>Modules/HIDSpecification.swiftmodule/arm64-apple-macos.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hH8TpejBeFIZS4qx+QgDcQo3V4pLp7FF6tltnZhu/5I=
-			</data>
-		</dict>
-		<key>Modules/HIDSpecification.swiftmodule/x86_64-apple-macos.abi.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			KnRdWE4y6t4QM5zi5JDptPdHFgJy1Tku+7GLkZS2aNM=
-			</data>
-		</dict>
-		<key>Modules/HIDSpecification.swiftmodule/x86_64-apple-macos.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			k9nmCuCwwsWp4bAkDFI4OctFMe25A/GMLHk1ErxYXt0=
-			</data>
-		</dict>
-		<key>Modules/HIDSpecification.swiftmodule/x86_64-apple-macos.swiftmodule</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			QIv0Xo/V4WVSxRBT/zonxUSp2eWCi8t2Vpo1xbr+KA0=
+			ihznWYIbW8G1LWGfEH2nCG4UomGzWlBIdQPqw5fVWtI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -104,14 +76,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ecnfyJO9f9o3haKFtzU8nZubEmg7L+pJupTRy4StuIs=
+			u1+XX9at5iU9PwXKh6gbjIpOv+AdsWSpL6evqE8QH1k=
 			</data>
 		</dict>
 		<key>Resources/MustangDocument.momd/MustangDocument.mom</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZRjbyCQifOXILJsi4TpMiPXIHSzA2t2Mf5BSUFkQPN0=
+			XGNL1A1L+XVxWrGRHl3SqSL1xurEo63DZmgD3zleXxk=
 			</data>
 		</dict>
 		<key>Resources/MustangDocument.momd/VersionInfo.plist</key>
