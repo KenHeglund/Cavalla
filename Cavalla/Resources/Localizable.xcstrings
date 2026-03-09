@@ -1,0 +1,192 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%lld" : {
+
+    },
+    "HIDDevicesView.Heading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID Devices"
+          }
+        }
+      }
+    },
+    "HIDDevicesView.Label.Elements" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elements"
+          }
+        }
+      }
+    },
+    "HIDDevicesView.Label.NoDevices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Devices"
+          }
+        }
+      }
+    },
+    "HIDDevicesView.Label.ProductID" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product ID"
+          }
+        }
+      }
+    },
+    "HIDDevicesView.Label.VendorID" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vendor ID"
+          }
+        }
+      }
+    },
+    "HIDDevicesView.Label.Version" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
+    },
+    "HIDElementsView.Filter.Prompt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter elements by name"
+          }
+        }
+      }
+    },
+    "HIDElementsView.TableColumnTitle.Cookie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cookie"
+          }
+        }
+      }
+    },
+    "HIDElementsView.TableColumnTitle.Enabled" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled"
+          }
+        }
+      }
+    },
+    "HIDElementsView.TableColumnTitle.Name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "HIDElementsView.TableColumnTitle.Size" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Size"
+          }
+        }
+      }
+    },
+    "HIDElementsView.TableColumnTitle.Usage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usage"
+          }
+        }
+      }
+    },
+    "HIDElementsView.Title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID Elements"
+          }
+        }
+      }
+    },
+    "HIDManagerView.ButtonTitle.Close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close HID Manager"
+          }
+        }
+      }
+    },
+    "HIDManagerView.ButtonTitle.Open" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open HID Manager"
+          }
+        }
+      }
+    },
+    "HIDManagerView.Heading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID Manager"
+          }
+        }
+      }
+    },
+    "HIDValuesView.ButtonTitle.Clear" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Events"
+          }
+        }
+      }
+    },
+    "HIDValuesView.Title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HID Event Values"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

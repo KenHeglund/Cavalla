@@ -3,21 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		BE0D503415D5AB6A006C7F16 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0D503315D5AB6A006C7F16 /* IOKit.framework */; };
-		BE62963F15D5824000E38649 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE62963E15D5824000E38649 /* Cocoa.framework */; };
 		BE63AC801CF681DA00C3DD49 /* HIDSpecification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE63AC7F1CF681DA00C3DD49 /* HIDSpecification.framework */; };
 		BE63AC811CF6820300C3DD49 /* HIDSpecification.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE63AC7F1CF681DA00C3DD49 /* HIDSpecification.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE63AC861CF6AAD000C3DD49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63AC821CF6AAD000C3DD49 /* AppDelegate.swift */; };
-		BE63AC871CF6AAD000C3DD49 /* CAVHIDDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63AC831CF6AAD000C3DD49 /* CAVHIDDevice.swift */; };
-		BE63AC881CF6AAD000C3DD49 /* CAVHIDElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63AC841CF6AAD000C3DD49 /* CAVHIDElement.swift */; };
-		BE63AC891CF6AAD000C3DD49 /* CAVHIDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE63AC851CF6AAD000C3DD49 /* CAVHIDManager.swift */; };
-		BE63AC931CF6AB2C00C3DD49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE63AC8E1CF6AB2C00C3DD49 /* InfoPlist.strings */; };
-		BE63AC941CF6AB2C00C3DD49 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */; };
-		BE7269D61D08AB860089BB1A /* IsNotZeroTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7269D51D08AB860089BB1A /* IsNotZeroTransformer.swift */; };
+		BE97A9172F546C12007074B3 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = BE97A9162F546C12007074B3 /* Algorithms */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,32 +28,26 @@
 
 /* Begin PBXFileReference section */
 		BE0D503315D5AB6A006C7F16 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		BE3115962F5E817C002BE44C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BE3115972F5E817C002BE44C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BE3448832ADB2AEA0043A9E5 /* Cavalla.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cavalla.entitlements; sourceTree = "<group>"; };
 		BE62963A15D5824000E38649 /* Cavalla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cavalla.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE62963E15D5824000E38649 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		BE62964115D5824000E38649 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		BE62964315D5824000E38649 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE63AC7F1CF681DA00C3DD49 /* HIDSpecification.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HIDSpecification.framework; path = Frameworks/HIDSpecification.framework; sourceTree = "<group>"; };
-		BE63AC821CF6AAD000C3DD49 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Cavalla/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		BE63AC831CF6AAD000C3DD49 /* CAVHIDDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAVHIDDevice.swift; path = Cavalla/CAVHIDDevice.swift; sourceTree = SOURCE_ROOT; };
-		BE63AC841CF6AAD000C3DD49 /* CAVHIDElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAVHIDElement.swift; path = Cavalla/CAVHIDElement.swift; sourceTree = SOURCE_ROOT; };
-		BE63AC851CF6AAD000C3DD49 /* CAVHIDManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CAVHIDManager.swift; path = Cavalla/CAVHIDManager.swift; sourceTree = SOURCE_ROOT; };
-		BE63AC8A1CF6AB2300C3DD49 /* Cavalla-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Cavalla-Info.plist"; path = "Cavalla/Cavalla-Info.plist"; sourceTree = SOURCE_ROOT; };
-		BE63AC8F1CF6AB2C00C3DD49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Cavalla/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
-		BE63AC961CF6B85C00C3DD49 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		BE63AC971CF6C51D00C3DD49 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BE7269D51D08AB860089BB1A /* IsNotZeroTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsNotZeroTransformer.swift; sourceTree = "<group>"; };
-		BEECF8A6231E37D500BD5D7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BE31157D2F5E7FE5002BE44C /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+		BE3115892F5E7FE5002BE44C /* Source */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Source; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BE62963715D5824000E38649 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE97A9172F546C12007074B3 /* Algorithms in Frameworks */,
 				BE0D503415D5AB6A006C7F16 /* IOKit.framework in Frameworks */,
 				BE63AC801CF681DA00C3DD49 /* HIDSpecification.framework in Frameworks */,
-				BE62963F15D5824000E38649 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +57,8 @@
 		BE62962F15D5824000E38649 = {
 			isa = PBXGroup;
 			children = (
-				BE63AC951CF6B83200C3DD49 /* Documentation */,
+				BE3115962F5E817C002BE44C /* LICENSE */,
+				BE3115972F5E817C002BE44C /* README.md */,
 				BE62964415D5824000E38649 /* Cavalla */,
 				BE62963D15D5824000E38649 /* Frameworks */,
 				BE62963B15D5824000E38649 /* Products */,
@@ -88,9 +76,6 @@
 		BE62963D15D5824000E38649 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BE62964115D5824000E38649 /* AppKit.framework */,
-				BE62963E15D5824000E38649 /* Cocoa.framework */,
-				BE62964315D5824000E38649 /* Foundation.framework */,
 				BE0D503315D5AB6A006C7F16 /* IOKit.framework */,
 				BE63AC7F1CF681DA00C3DD49 /* HIDSpecification.framework */,
 			);
@@ -101,33 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				BE3448832ADB2AEA0043A9E5 /* Cavalla.entitlements */,
-				BE63AC821CF6AAD000C3DD49 /* AppDelegate.swift */,
-				BE63AC831CF6AAD000C3DD49 /* CAVHIDDevice.swift */,
-				BE63AC841CF6AAD000C3DD49 /* CAVHIDElement.swift */,
-				BE63AC851CF6AAD000C3DD49 /* CAVHIDManager.swift */,
-				BE7269D51D08AB860089BB1A /* IsNotZeroTransformer.swift */,
-				BE62966B15D583AE00E38649 /* Resources */,
+				BE3115892F5E7FE5002BE44C /* Source */,
+				BE31157D2F5E7FE5002BE44C /* Resources */,
 			);
 			path = Cavalla;
-			sourceTree = "<group>";
-		};
-		BE62966B15D583AE00E38649 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				BE63AC8A1CF6AB2300C3DD49 /* Cavalla-Info.plist */,
-				BE63AC8E1CF6AB2C00C3DD49 /* InfoPlist.strings */,
-				BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		BE63AC951CF6B83200C3DD49 /* Documentation */ = {
-			isa = PBXGroup;
-			children = (
-				BE63AC961CF6B85C00C3DD49 /* LICENSE */,
-				BE63AC971CF6C51D00C3DD49 /* README.md */,
-			);
-			name = Documentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +108,10 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				BE31157D2F5E7FE5002BE44C /* Resources */,
+				BE3115892F5E7FE5002BE44C /* Source */,
+			);
 			name = Cavalla;
 			productName = Cavalla;
 			productReference = BE62963A15D5824000E38649 /* Cavalla.app */;
@@ -160,7 +126,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = CAV;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 2630;
 				ORGANIZATIONNAME = OrderedBytes;
 				TargetAttributes = {
 					BE62963915D5824000E38649 = {
@@ -177,6 +143,9 @@
 				Base,
 			);
 			mainGroup = BE62962F15D5824000E38649;
+			packageReferences = (
+				BE97A9152F546C12007074B3 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+			);
 			productRefGroup = BE62963B15D5824000E38649 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -191,8 +160,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE63AC931CF6AB2C00C3DD49 /* InfoPlist.strings in Resources */,
-				BE63AC941CF6AB2C00C3DD49 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,34 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE63AC891CF6AAD000C3DD49 /* CAVHIDManager.swift in Sources */,
-				BE63AC871CF6AAD000C3DD49 /* CAVHIDDevice.swift in Sources */,
-				BE7269D61D08AB860089BB1A /* IsNotZeroTransformer.swift in Sources */,
-				BE63AC881CF6AAD000C3DD49 /* CAVHIDElement.swift in Sources */,
-				BE63AC861CF6AAD000C3DD49 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		BE63AC8E1CF6AB2C00C3DD49 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE63AC8F1CF6AB2C00C3DD49 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		BE63AC901CF6AB2C00C3DD49 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BEECF8A6231E37D500BD5D7F /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BE62965615D5824000E38649 /* Debug */ = {
@@ -271,12 +214,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -316,11 +259,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
-				SWIFT_VERSION = 5.0;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
@@ -328,22 +271,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Cavalla/Cavalla.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 72C3P5QCVR;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Cavalla/Cavalla-Info.plist";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 OrderedBytes. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orderedbytes.Cavalla;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -352,22 +297,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Cavalla/Cavalla.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 72C3P5QCVR;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Cavalla/Cavalla-Info.plist";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 OrderedBytes. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.orderedbytes.Cavalla;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -394,6 +341,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BE97A9152F546C12007074B3 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BE97A9162F546C12007074B3 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE97A9152F546C12007074B3 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BE62963115D5824000E38649 /* Project object */;
 }
